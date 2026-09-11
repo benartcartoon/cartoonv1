@@ -1,0 +1,10 @@
+{
+  "project": "cartoonv1",
+  "target_minutes": 10,
+  "output_resolution": "1920x1080",
+  "fps": 24,
+  "output_dir": "outputs",
+  "character_config": "characters/config.json",
+  "topic_file": "video_topic.txt",
+  "comfyui_url": "http://127.0.0.1:8188"
+}
