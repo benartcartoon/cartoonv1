@@ -1,4 +1,11 @@
 {
   "project": "cartoonv1",
-  "characters": []
+  "characters": [
+    {"id":"kedi","name":"Ana karakter","image":"characters/images/kedi.png"},
+    {"id":"anne","name":"Anne","image":"characters/images/anne.png"},
+    {"id":"baba","name":"Baba","image":"characters/images/baba.png"},
+    {"id":"arkadas1","name":"Arkadaş 1","image":"characters/images/arkadas1.png"},
+    {"id":"arkadas2","name":"Arkadaş 2","image":"characters/images/arkadas2.png"},
+    {"id":"kotu_karakter","name":"Kötü karakter","image":"characters/images/kotu_karakter.png"}
+  ]
 }
