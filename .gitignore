@@ -1,0 +1,9 @@
+outputs/
+models_cache/
+*.mp4
+*.wav
+*.mp3
+.env
+__pycache__/
+*.pyc
+.DS_Store
