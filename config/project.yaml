@@ -1,0 +1,27 @@
+project_name: CartoonV1
+drive_root: /content/drive/MyDrive/CartoonV1
+
+video:
+  target_minutes: 10
+  test_mode: true
+  test_seconds: 45
+  scene_seconds: 5
+  fps: 24
+  width: 832
+  height: 480
+
+wan:
+  family: Wan2
+  # Kesin model T4 testi yapildiktan sonra burada sabitlenecek.
+  model_id: AUTO_T4
+  use_reference_image: true
+  keep_models_on_drive: true
+
+character_consistency:
+  enabled: true
+  reference_folder: characters
+  lock_appearance_prompt: true
+  seed_strategy: character_locked
+
+output:
+  final_name: cartoon_final.mp4

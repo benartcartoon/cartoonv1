@@ -1,0 +1,28 @@
+title: Ilk CartoonV1 Testi
+language: tr
+
+# Ilk test kisa tutulur. Karakter tutarliligi onaylaninca 10 dakikalik senaryo buraya yazilir.
+scenes:
+  - id: 1
+    duration: 5
+    characters: [main_character]
+    location: ev
+    action: Ana karakter pencereden disariya bakar ve merakla gulumser.
+    camera: medium shot, gentle push in
+    dialogue: ""
+
+  - id: 2
+    duration: 5
+    characters: [main_character]
+    location: evin onu
+    action: Ana karakter kapidan cikar ve etrafina bakar.
+    camera: wide shot, smooth tracking
+    dialogue: ""
+
+  - id: 3
+    duration: 5
+    characters: [main_character]
+    location: park
+    action: Ana karakter parkta yurur ve uzakta ilginc bir sey fark eder.
+    camera: side tracking shot
+    dialogue: ""

@@ -1,0 +1,19 @@
+characters:
+  main_character:
+    name: ANA_KARAKTER
+    role: main
+    reference_images:
+      - main/front.png
+      - main/three_quarter.png
+      - main/side.png
+    appearance: >-
+      KARAKTER TANIMI BURAYA YAZILACAK. Tur, renk, yuz, goz, kiyafet,
+      aksesuar ve degismemesi gereken tum fiziksel ayrintilar net yazilmali.
+    never_change:
+      - face
+      - body_proportions
+      - fur_or_skin_colors
+      - eye_color
+      - signature_clothing
+
+# Yeni karakter eklendiginde ayni formatta alta ekle.

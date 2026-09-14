@@ -1,26 +1,35 @@
-# cartoonv1
+# CartoonV1
 
-Sabit karakterlerle tekrar kullanılabilen çizgi film/video üretim projesi.
+Wan2 tabanli, ayni karakterleri koruyarak uzun cizgi film uretmek icin Colab + Google Drive + GitHub projesi.
 
-## Kullanım mantığı
+## Mimari
+- GitHub: kod, senaryo, karakter tanimlari, ayarlar
+- Google Drive: buyuk modeller, karakter referans gorselleri, ara klipler ve final videolar
+- Colab: sadece GPU ile uretim
 
-1. Karakter PNG dosyaları bir kez `characters/images/` klasörüne eklenir.
-2. Yeni bölüm için yalnızca `video_topic.txt` değiştirilir.
-3. GPU instance açılır ve repo klonlanır.
-4. `install.sh` ortamı hazırlar.
-5. `start.sh` üretim sürecini başlatır.
-6. Çıktılar `outputs/` klasörüne alınır.
-7. Videolar indirildikten sonra geçici GPU instance destroy edilebilir.
+## Hedef akis
+1. `story/story.yaml` okunur.
+2. `characters/characters.yaml` ile sabit karakter kimlikleri eklenir.
+3. Senaryo kisa sahnelere bolunur.
+4. Wan2 her sahneyi ayni karakter referanslariyla uretir.
+5. Klipler birlestirilir ve final MP4 Drive'a yazilir.
 
-## Sabit karakter dosyaları
+## Google Drive yapisi
+`/MyDrive/CartoonV1/`
+- `models/` buyuk Wan2 dosyalari
+- `characters/` referans gorseller
+- `cache/` model/cache
+- `scenes/` uretilen sahneler
+- `output/` final videolar
 
-- `characters/images/kedi.png`
-- `characters/images/anne.png`
-- `characters/images/baba.png`
-- `characters/images/arkadas1.png`
-- `characters/images/arkadas2.png`
-- `characters/images/kotu_karakter.png`
+## Colab tek hucre
+```python
+from google.colab import drive
+drive.mount('/content/drive')
 
-## Durum
+!rm -rf /content/cartoonv1
+!git clone -q https://github.com/benartcartoon/cartoonv1.git /content/cartoonv1
+!bash /content/cartoonv1/oneclick.sh
+```
 
-Temel otomasyon iskeleti hazır. ComfyUI video workflow'u ve kullanılacak model(ler) GPU'yu ilk kez açmadan önce/ilk test sırasında eklenecek.
+Ilk test 30-60 saniye olacak. Karakter tutarliligi onaylandiktan sonra hedef sure 10 dakikaya acilacak.
