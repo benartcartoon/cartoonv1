@@ -87,9 +87,10 @@ def main():
         cmd=[
             "python3", "generate.py", "--task", wan["task"], "--size", wan["size"],
             "--ckpt_dir", str(model_dir), "--offload_model", str(wan.get("offload_model", True)),
+            "--sample_steps", str(wan.get("sample_steps",20)),
             "--sample_shift", str(wan.get("sample_shift",8)),
             "--sample_guide_scale", str(wan.get("sample_guide_scale",6)),
-            "--frame_num", str(wan.get("frame_num",81)), "--base_seed", str(seed),
+            "--frame_num", str(wan.get("frame_num",17)), "--base_seed", str(seed),
             "--prompt", prompt, "--save_file", str(out)
         ]
         if wan.get("t5_cpu", False):
