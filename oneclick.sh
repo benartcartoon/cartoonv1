@@ -5,7 +5,6 @@ ROOT="$(cd "$(dirname "$0")" && pwd)"
 DRIVE_ROOT="${CARTOON_DRIVE:-/content/drive/MyDrive/CartoonV1}"
 WAN_CODE="/content/Wan2.1"
 WAN_MODEL="$DRIVE_ROOT/models/wan2"
-ENV_CACHE="$DRIVE_ROOT/env_cache"
 
 [[ -d /content/drive/MyDrive ]] || { echo "HATA: Google Drive bagli degil."; exit 1; }
 command -v nvidia-smi >/dev/null 2>&1 || { echo "HATA: GPU acik degil. Colab'da T4 sec."; exit 2; }
@@ -19,6 +18,7 @@ done
 echo "=============================================="
 echo "CartoonV1 ONE CLICK - Wan2.1 T2V 1.3B"
 echo "Drive modeli: $WAN_MODEL"
+echo "GPU: $(nvidia-smi --query-gpu=name --format=csv,noheader | head -1)"
 echo "=============================================="
 
 apt-get update -qq
@@ -28,7 +28,11 @@ git clone -q --depth 1 https://github.com/Wan-Video/Wan2.1.git "$WAN_CODE"
 
 export PIP_CACHE_DIR="$DRIVE_ROOT/cache/pip"
 mkdir -p "$PIP_CACHE_DIR"
-python3 -m pip install -q -r "$WAN_CODE/requirements.txt"
+
+# Colab T4 is Turing; current FlashAttention-2 does not support T4.
+# Install Wan dependencies except flash_attn. Wan falls back to PyTorch SDPA.
+grep -viE '^flash[_-]attn([<=> ].*)?$' "$WAN_CODE/requirements.txt" > /tmp/wan_requirements_t4.txt
+python3 -m pip install -q -r /tmp/wan_requirements_t4.txt
 python3 -m pip install -q -r "$ROOT/requirements.txt"
 
 python3 "$ROOT/scripts/pipeline.py" \
