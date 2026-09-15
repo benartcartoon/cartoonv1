@@ -5,31 +5,48 @@ ROOT="$(cd "$(dirname "$0")" && pwd)"
 DRIVE_ROOT="${CARTOON_DRIVE:-/content/drive/MyDrive/CartoonV1}"
 WAN_CODE="/content/Wan2.1"
 WAN_MODEL="$DRIVE_ROOT/models/wan2"
+FP8_T5="$WAN_MODEL/umt5-xxl-enc-fp8_e4m3fn.safetensors"
 
 [[ -d /content/drive/MyDrive ]] || { echo "HATA: Google Drive bagli degil."; exit 1; }
 command -v nvidia-smi >/dev/null 2>&1 || { echo "HATA: GPU acik degil. Colab'da T4 sec."; exit 2; }
 
 mkdir -p "$DRIVE_ROOT"/{models,characters,cache,scenes,audio,output,temp,env_cache}
 
-for f in config.json diffusion_pytorch_model.safetensors models_t5_umt5-xxl-enc-bf16.pth Wan2.1_VAE.pth; do
+for f in config.json diffusion_pytorch_model.safetensors Wan2.1_VAE.pth; do
   [[ -s "$WAN_MODEL/$f" ]] || { echo "HATA: Wan model dosyasi eksik: $WAN_MODEL/$f"; exit 3; }
 done
 
 echo "=============================================="
-echo "CartoonV1 ONE CLICK - Wan2.1 T2V 1.3B"
+echo "CartoonV1 LOW-RAM - Wan2.1 T2V 1.3B"
 echo "Drive modeli: $WAN_MODEL"
 echo "GPU: $(nvidia-smi --query-gpu=name --format=csv,noheader | head -1)"
 echo "RAM: $(free -h | awk '/Mem:/ {print $2}')"
 echo "=============================================="
 
-# Colab containers do not reliably permit swapon. Keep the runtime clean and
-# let Wan use model offload instead of attempting privileged swap setup.
-rm -f /content/cartoonv1.swap 2>/dev/null || true
-
 apt-get update -qq
 apt-get install -y -qq ffmpeg git >/dev/null
+python3 -m pip install -q huggingface_hub
+
+# Download the ~5.3 GB FP8 UMT5 once to Drive instead of loading the 11 GB BF16 T5.
+if [[ ! -s "$FP8_T5" ]]; then
+  echo "FP8 T5 ilk kez Drive'a indiriliyor (~5.3 GB)..."
+  hf download Kijai/WanVideo_comfy umt5-xxl-enc-fp8_e4m3fn.safetensors --local-dir "$WAN_MODEL"
+fi
+
+# PR #80 adds FP8 T5 support to the official Wan2.1 code. Use its tested head commit.
 rm -rf "$WAN_CODE"
-git clone -q --depth 1 https://github.com/Wan-Video/Wan2.1.git "$WAN_CODE"
+git clone -q https://github.com/YexiongLin/Wan2.1.git "$WAN_CODE"
+cd "$WAN_CODE"
+git checkout -q 36d6d91
+
+# Point Wan 1.3B config at the FP8 encoder kept on Drive.
+python3 - <<'PY'
+from pathlib import Path
+p=Path('/content/Wan2.1/wan/configs/wan_t2v_1_3B.py')
+s=p.read_text()
+s=s.replace("models_t5_umt5-xxl-enc-bf16.pth", "umt5-xxl-enc-fp8_e4m3fn.safetensors")
+p.write_text(s)
+PY
 
 export PIP_CACHE_DIR="$DRIVE_ROOT/cache/pip"
 export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
@@ -37,9 +54,9 @@ export TOKENIZERS_PARALLELISM=false
 export MALLOC_ARENA_MAX=2
 mkdir -p "$PIP_CACHE_DIR"
 
-# Tesla T4 is Turing; skip FlashAttention-2 build.
 grep -viE '^flash[_-]attn([<=> ].*)?$' "$WAN_CODE/requirements.txt" > /tmp/wan_requirements_t4.txt
 python3 -m pip install -q -r /tmp/wan_requirements_t4.txt
+python3 -m pip install -q accelerate safetensors
 python3 -m pip install -q -r "$ROOT/requirements.txt"
 
 python3 "$ROOT/scripts/pipeline.py" \
