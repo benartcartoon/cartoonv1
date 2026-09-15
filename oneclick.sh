@@ -22,17 +22,9 @@ echo "GPU: $(nvidia-smi --query-gpu=name --format=csv,noheader | head -1)"
 echo "RAM: $(free -h | awk '/Mem:/ {print $2}')"
 echo "=============================================="
 
-# Colab standard RAM can kill Wan while the 11 GB T5 is being loaded.
-# Add local-disk swap so the Linux OOM killer does not terminate generation.
-if ! swapon --show | grep -q '/content/cartoonv1.swap'; then
-  echo "RAM korumasi: 16G swap hazirlaniyor..."
-  rm -f /content/cartoonv1.swap
-  fallocate -l 16G /content/cartoonv1.swap 2>/dev/null || dd if=/dev/zero of=/content/cartoonv1.swap bs=1M count=16384 status=none
-  chmod 600 /content/cartoonv1.swap
-  mkswap /content/cartoonv1.swap >/dev/null
-  swapon /content/cartoonv1.swap
-fi
-free -h
+# Colab containers do not reliably permit swapon. Keep the runtime clean and
+# let Wan use model offload instead of attempting privileged swap setup.
+rm -f /content/cartoonv1.swap 2>/dev/null || true
 
 apt-get update -qq
 apt-get install -y -qq ffmpeg git >/dev/null
@@ -42,9 +34,10 @@ git clone -q --depth 1 https://github.com/Wan-Video/Wan2.1.git "$WAN_CODE"
 export PIP_CACHE_DIR="$DRIVE_ROOT/cache/pip"
 export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 export TOKENIZERS_PARALLELISM=false
+export MALLOC_ARENA_MAX=2
 mkdir -p "$PIP_CACHE_DIR"
 
-# Tesla T4 is Turing; FlashAttention-2 is not supported. Wan uses its fallback attention path.
+# Tesla T4 is Turing; skip FlashAttention-2 build.
 grep -viE '^flash[_-]attn([<=> ].*)?$' "$WAN_CODE/requirements.txt" > /tmp/wan_requirements_t4.txt
 python3 -m pip install -q -r /tmp/wan_requirements_t4.txt
 python3 -m pip install -q -r "$ROOT/requirements.txt"
