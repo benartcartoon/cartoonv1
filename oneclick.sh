@@ -33,19 +33,10 @@ if [[ ! -s "$FP8_T5" ]]; then
   hf download Kijai/WanVideo_comfy umt5-xxl-enc-fp8_e4m3fn.safetensors --local-dir "$WAN_MODEL"
 fi
 
-# The FP8 Wan fork resolves t5_tokenizer relative to ckpt_dir. Keep the small
-# Google UMT5 tokenizer files at exactly ckpt_dir/google/umt5-xxl.
 if [[ ! -s "$TOKENIZER_DIR/tokenizer_config.json" ]]; then
   echo "UMT5 tokenizer dosyalari Drive'a hazirlaniyor..."
   mkdir -p "$TOKENIZER_DIR"
-  python3 - <<'PY'
-from huggingface_hub import snapshot_download
-snapshot_download(
-    repo_id="google/umt5-xxl",
-    local_dir="/content/drive/MyDrive/CartoonV1/models/wan2/google/umt5-xxl",
-    allow_patterns=["tokenizer*", "spiece.model", "special_tokens_map.json", "config.json"],
-)
-PY
+  hf download google/umt5-xxl --include 'config.json' 'tokenizer.json' 'tokenizer_config.json' 'special_tokens_map.json' 'spiece.model' --local-dir "$TOKENIZER_DIR"
 fi
 
 rm -rf "$WAN_CODE"
@@ -53,11 +44,21 @@ git clone -q https://github.com/YexiongLin/Wan2.1.git "$WAN_CODE"
 cd "$WAN_CODE"
 git checkout -q 36d6d91
 
+# Point Wan 1.3B at the FP8 text encoder kept on Drive.
 python3 - <<'PY'
 from pathlib import Path
 p=Path('/content/Wan2.1/wan/configs/wan_t2v_1_3B.py')
 s=p.read_text()
 s=s.replace("models_t5_umt5-xxl-enc-bf16.pth", "umt5-xxl-enc-fp8_e4m3fn.safetensors")
+p.write_text(s)
+
+# This FP8 fork calls flash_attention() directly in model.py. Tesla T4 cannot
+# use FlashAttention-2, so route those calls through Wan's built-in SDPA
+# fallback function instead.
+p=Path('/content/Wan2.1/wan/modules/model.py')
+s=p.read_text()
+s=s.replace('from .attention import flash_attention', 'from .attention import attention')
+s=s.replace('flash_attention(', 'attention(')
 p.write_text(s)
 PY
 
@@ -67,6 +68,8 @@ export TOKENIZERS_PARALLELISM=false
 export MALLOC_ARENA_MAX=2
 mkdir -p "$PIP_CACHE_DIR"
 
+# Do not install FlashAttention on Tesla T4. Wan's attention() falls back to
+# torch.nn.functional.scaled_dot_product_attention when FA2/FA3 is absent.
 grep -viE '^flash[_-]attn([<=> ].*)?$' "$WAN_CODE/requirements.txt" > /tmp/wan_requirements_t4.txt
 python3 -m pip install -q -r /tmp/wan_requirements_t4.txt
 python3 -m pip install -q accelerate safetensors
