@@ -7,8 +7,8 @@ video:
   test_seconds: 5
   scene_seconds: 5
   fps: 16
-  width: 480
-  height: 832
+  width: 832
+  height: 480
 
 wan:
   family: Wan2.1
@@ -16,12 +16,13 @@ wan:
   task: t2v-1.3B
   model_dir: /content/drive/MyDrive/CartoonV1/models/wan2
   code_dir: /content/Wan2.1
-  size: "480*832"
-  frame_num: 81
+  size: "832*480"
+  frame_num: 17
+  sample_steps: 20
   sample_shift: 8
   sample_guide_scale: 6
   offload_model: true
-  t5_cpu: false
+  t5_cpu: true
   keep_models_on_drive: true
 
 character_consistency:
