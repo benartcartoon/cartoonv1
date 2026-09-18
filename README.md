@@ -26,5 +26,4 @@ MyDrive/CartoonV1/LTX2/
 
 Varsayılan senaryo iki adet yaklaşık 10 saniyelik sahne üretir ve bunları 20 saniyelik tek MP4 olarak birleştirir: siyah şapkalı kedi selam verir, kameraya bakar, dans eder ve kadrajdan çıkar.
 
-> LTX-2.5 ağır bir modeldir. T4 15 GB için FP8 ve disk offload açıktır; çalışma yavaş olabilir. Daha güçlü GPU varsa `OFFLOAD=cpu` kullanılabilir.
-
+> LTX-2.5 ağır bir modeldir. T4 15 GB'da disk offload kullanılır ve çalışma çok yavaş olabilir. FP8, yalnızca destekleyen yeni GPU'larda otomatik açılır. Daha güçlü ve yüksek RAM'li GPU varsa `OFFLOAD=cpu` kullanılabilir.

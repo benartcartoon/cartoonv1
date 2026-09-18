@@ -47,10 +47,21 @@ def main() -> None:
         "--width", os.getenv("WIDTH", "768"),
         "--frame-rate", os.getenv("FPS", "24"),
         "--num-frames", os.getenv("FRAMES_PER_SCENE", "241"),
-        "--quantization", "fp8-cast",
         "--offload", os.getenv("OFFLOAD", "disk"),
         "--image", str(CHARACTER), "0", "0.95",
     ]
+    gpu_capability = subprocess.run(
+        ["nvidia-smi", "--query-gpu=compute_cap", "--format=csv,noheader"],
+        check=False, capture_output=True, text=True,
+    ).stdout.strip()
+    try:
+        major, minor = (int(x) for x in gpu_capability.split(".", 1))
+    except (ValueError, TypeError):
+        major, minor = (0, 0)
+    if (major, minor) >= (8, 9):
+        common += ["--quantization", "fp8-cast"]
+    else:
+        print(f"GPU compute capability {gpu_capability or 'bilinmiyor'}: FP8 kapalı, disk offload kullanılacak.")
 
     clips: list[Path] = []
     for index, prompt in enumerate(scenes, start=1):
@@ -67,4 +78,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
