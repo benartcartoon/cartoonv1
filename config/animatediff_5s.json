@@ -1,0 +1,15 @@
+{
+  "checkpoint": "disneyPixarCartoon_v10.safetensors",
+  "motion_module": "mm_sd15_v2.safetensors",
+  "frames": 40,
+  "fps": 8,
+  "context_batch_size": 8,
+  "stride": 1,
+  "overlap": -1,
+  "closed_loop": "N",
+  "width": 512,
+  "height": 512,
+  "steps": 20,
+  "cfg_scale": 7,
+  "save_format": "MP4"
+}
