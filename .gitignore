@@ -1,12 +1,7 @@
-__pycache__/
-*.pyc
-.venv/
-work/
-scenes/
-output/
-models/
-cache/
 *.mp4
 *.safetensors
-*.ckpt
-*.pt
+models/
+output/
+cache/
+work/
+__pycache__/

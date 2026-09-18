@@ -1,35 +1,30 @@
-# CartoonV1
+# CartoonV1 — LTX-2.5
 
-Wan2 tabanli, ayni karakterleri koruyarak uzun cizgi film uretmek icin Colab + Google Drive + GitHub projesi.
+Bu depo, Google Colab GPU ile LTX-2.5 kullanarak sabit bir karakter görselinden çizgi film videosu üretir.
 
-## Mimari
-- GitHub: kod, senaryo, karakter tanimlari, ayarlar
-- Google Drive: buyuk modeller, karakter referans gorselleri, ara klipler ve final videolar
-- Colab: sadece GPU ile uretim
+## Tek komut
 
-## Hedef akis
-1. `story/story.yaml` okunur.
-2. `characters/characters.yaml` ile sabit karakter kimlikleri eklenir.
-3. Senaryo kisa sahnelere bolunur.
-4. Wan2 her sahneyi ayni karakter referanslariyla uretir.
-5. Klipler birlestirilir ve final MP4 Drive'a yazilir.
+Colab'da GPU'yu açın, sonra yalnızca:
 
-## Google Drive yapisi
-`/MyDrive/CartoonV1/`
-- `models/` buyuk Wan2 dosyalari
-- `characters/` referans gorseller
-- `cache/` model/cache
-- `scenes/` uretilen sahneler
-- `output/` final videolar
-
-## Colab tek hucre
-```python
-from google.colab import drive
-drive.mount('/content/drive')
-
-!rm -rf /content/cartoonv1
-!git clone -q https://github.com/benartcartoon/cartoonv1.git /content/cartoonv1
-!bash /content/cartoonv1/oneclick.sh
+```bash
+!git clone -q https://github.com/benartcartoon/cartoonv1.git /content/cartoonv1 && bash /content/cartoonv1/run_colab.sh
 ```
 
-Ilk test 30-60 saniye olacak. Karakter tutarliligi onaylandiktan sonra hedef sure 10 dakikaya acilacak.
+İlk çalıştırmada Google Drive bağlanır, LTX-2.5 kodu kurulur ve yaklaşık 66 GiB model dosyası Drive'a bir kez indirilir. Sonraki çalıştırmalar aynı modeli Drive'dan kullanır.
+
+## Drive düzeni
+
+```
+MyDrive/CartoonV1/LTX2/
+├── characters/black_cat_hat.png
+├── config/story.txt
+├── models/ltx-2.5/
+└── output/
+```
+
+## İlk deneme
+
+Varsayılan senaryo iki adet yaklaşık 10 saniyelik sahne üretir ve bunları 20 saniyelik tek MP4 olarak birleştirir: siyah şapkalı kedi selam verir, kameraya bakar, dans eder ve kadrajdan çıkar.
+
+> LTX-2.5 ağır bir modeldir. T4 15 GB için FP8 ve disk offload açıktır; çalışma yavaş olabilir. Daha güçlü GPU varsa `OFFLOAD=cpu` kullanılabilir.
+
