@@ -25,6 +25,9 @@ grep -viE '^[[:space:]]*(flash[-_]attn|numpy|transformers|diffusers)' requiremen
 python -m pip install -q --disable-pip-version-check -r /tmp/wan22_requirements.txt
 touch "$MARKER"
 
+echo "[4.5/5] Eksik WAN modulleri kontrol ediliyor..."
+python -m pip install -q --disable-pip-version-check decord
+
 echo "[5/5] Surum kontrolu ve web arayuzu..."
 python - <<'PY'
 import numpy, transformers, diffusers
