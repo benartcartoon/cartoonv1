@@ -18,12 +18,17 @@ def generate(image, prompt, frames, steps, seed, auto_audio, audio_prompt, progr
     img=f"{INP}/reference_{stamp}.png"
     out=f"{OUT}/wan22_{stamp}.mp4"
     image.convert("RGB").save(img)
+    # Stability-first prompt guard: reference identity and scene continuity take priority.
+    stability_guard = """
+STRICT STABILITY RULES: Preserve the exact identity, proportions, colors, face, eyes, accessories and materials of the reference character in every frame. Keep the background, lighting and camera consistent. Use one continuous shot with a mostly fixed camera. Perform only the clearly requested actions, one after another, with calm transitions. Do not invent additional actions or objects. Prioritize character consistency over dramatic motion. No morphing, no warping, no identity drift, no object duplication, no disappearing accessories, no extra limbs, no sudden pose jumps, no camera cuts, no zooms.
+"""
+    safe_prompt = prompt.strip() + "\n\n" + stability_guard.strip()
     cmd=[
         "python", f"{WAN}/generate.py",
         "--task","ti2v-5B","--size","1280*704",
         "--ckpt_dir",MODEL,
         "--image",img,
-        "--prompt",prompt,
+        "--prompt",safe_prompt,
         "--frame_num",str(int(frames)),
         "--sample_steps",str(int(steps)),
         "--base_seed",str(int(seed)),
@@ -103,10 +108,44 @@ with gr.Blocks(title="CartoonV1 WAN2.2") as demo:
             steps=gr.Slider(20,50,value=40,step=1,label="Steps")
             seed=gr.Number(value=3193264261,precision=0,label="Seed")
             auto_audio=gr.Checkbox(value=True,label="Otomatik AI ses ekle")
-            audio_prompt=gr.Textbox(lines=2,label="Ses tarifi",value="cute orange kitten meowing happily while dancing, playful cartoon sound effects, soft paw movement sounds, gentle licking sound near the end, clean studio audio, no human speech")
+            audio_prompt=gr.Textbox(lines=2,label="Senkron ses tarifi",value="clean synchronized cartoon foley matching the visible actions, soft object handling sounds, movement whooshes only when movement happens, subtle room ambience, no music, no speech")
             btn=gr.Button("VIDEO URET",variant="primary")
     video=gr.Video(label="Sonuc")
     status=gr.Textbox(label="Durum",lines=8)
     btn.click(generate,[image,prompt,frames,steps,seed,auto_audio,audio_prompt],[video,status])
 
-demo.queue().launch(share=True, show_error=True, allowed_paths=[OUT, INP])
+demo.queue().launch(share=True, show_error=True, allowed_paths=[OUT, INP])    if auto_audio:
+        progress(0.95, desc="Video izleniyor ve hareketlere senkron ses uretiliyor...")
+        try:
+            import glob, shutil
+            mma="/content/MMAudio"
+            if not os.path.isfile(f"{mma}/demo.py"):
+                raise RuntimeError("MMAudio kurulu degil. setup_wan22.sh ile kurulumu yenileyin.")
+            duration=max(1.0, (int(frames)-1)/24.0)
+            before=set(glob.glob(f"{mma}/output/*.mp4"))
+            sfx_prompt=(audio_prompt.strip() if audio_prompt.strip() else
+                "clean synchronized cartoon foley sound effects matching visible actions, no music, no speech")
+            # Strongly suppress the failure mode we saw: unwanted music/voices.
+            sfx_prompt += ". Foley and physical sound effects only. No background music. No melody. No singing. No speech."
+            cmd_audio=[
+                "python",f"{mma}/demo.py",
+                f"--duration={duration:.3f}",
+                f"--video={out}",
+                "--prompt",sfx_prompt,
+                "--negative_prompt","music, background music, melody, song, singing, human speech, dialogue, voice, noisy, distorted"
+            ]
+            a=subprocess.run(cmd_audio,cwd=mma,text=True,capture_output=True)
+            if a.returncode != 0:
+                raise RuntimeError((a.stderr or a.stdout)[-5000:])
+            after=set(glob.glob(f"{mma}/output/*.mp4"))
+            candidates=list(after-before) or glob.glob(f"{mma}/output/*.mp4")
+            if not candidates:
+                raise RuntimeError("MMAudio cikti videosu bulunamadi.")
+            made=max(candidates,key=os.path.getmtime)
+            final=f"{OUT}/wan22_{stamp}_senkron_sesli.mp4"
+            shutil.copy2(made,final)
+            progress(1.0, desc="Tamamlandi - senkron ses eklendi")
+            return final, f"TAMAMLANDI (SENKRON SES): {final}"
+        except Exception as e:
+            return out, "Video tamamlandi; senkron ses eklenemedi. Sessiz video korundu. SES HATASI: "+repr(e)
+
