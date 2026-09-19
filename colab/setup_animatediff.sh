@@ -49,6 +49,10 @@ ln -s "$ROOT/output" "$WEBUI/outputs"
 
 cd "$WEBUI"
 
+# A1111 v1.10.1 / torch 2.1.x and scikit-image wheels require NumPy 1.x ABI.
+# ControlNet may otherwise pull NumPy 2.x and break startup.
+"$PYTHON" -m pip install -q --force-reinstall "numpy==1.26.4"
+
 # AnimateDiff recommends padding positive/negative conditioning to the same length.
 # This reduces unrelated temporal branches between prompt conditions.
 "$PYTHON" - <<'PY'
