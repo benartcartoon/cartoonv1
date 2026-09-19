@@ -8,7 +8,6 @@ MAMBA_ROOT_PREFIX="/content/micromamba"
 
 mkdir -p "$ROOT"/{models,characters,input,output,config}
 
-# Colab artik Python 3.13 kullaniyor. A1111 v1.10.1 icin izole Python 3.10 kur.
 if [ ! -x "$PYENV/bin/python" ]; then
   echo "Python 3.10 ortami hazirlaniyor..."
   if [ ! -x /content/bin/micromamba ]; then
@@ -19,7 +18,10 @@ if [ ! -x "$PYENV/bin/python" ]; then
 fi
 
 PYTHON="$PYENV/bin/python"
-"$PYTHON" -m pip install -q --upgrade "pip<25"
+
+# A1111 v1.10.1'in eski setup.py paketleri setuptools 84 ile bozuluyor.
+# Calisan eski packaging toolchain'i sabitle.
+"$PYTHON" -m pip install -q --force-reinstall "pip==24.0" "setuptools==69.5.1" "wheel==0.43.0" "packaging<25"
 
 if [ ! -d "$WEBUI/.git" ]; then
   git clone --branch v1.10.1 https://github.com/AUTOMATIC1111/stable-diffusion-webui.git "$WEBUI"
