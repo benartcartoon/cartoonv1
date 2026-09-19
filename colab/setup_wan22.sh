@@ -27,6 +27,12 @@ touch "$MARKER"
 
 echo "[4.5/5] Eksik WAN modulleri kontrol ediliyor..."
 python -m pip install -q --disable-pip-version-check decord
+echo "FlashAttention 2 kuruluyor (WAN2.2 icin zorunlu)..."
+python -m pip install -q --disable-pip-version-check --no-build-isolation flash-attn
+python - <<'PY'
+import flash_attn
+print("flash-attn:", flash_attn.__version__)
+PY
 
 echo "[5/5] Surum kontrolu ve web arayuzu..."
 python - <<'PY'
