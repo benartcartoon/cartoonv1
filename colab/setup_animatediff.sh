@@ -4,15 +4,20 @@ set -e
 ROOT="/content/drive/MyDrive/AnimateDiff-Colab"
 WEBUI="/content/stable-diffusion-webui"
 PYENV="/content/a1111-py310"
+MAMBA_ROOT_PREFIX="/content/micromamba"
 
 mkdir -p "$ROOT"/{models,characters,input,output,config}
 
-# A1111 v1.10.1 eski paketlere bagimli; Colab'in Python 3.13'u yerine
-# micromamba ile izole Python 3.10 ortami kullan.
+# Colab artik Python 3.13 kullaniyor. A1111 v1.10.1 icin izole Python 3.10 kur.
 if [ ! -x "$PYENV/bin/python" ]; then
   echo "Python 3.10 ortami hazirlaniyor..."
-  micromamba create -y -p "$PYENV" python=3.10 pip
+  if [ ! -x /content/bin/micromamba ]; then
+    cd /content
+    curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xvj bin/micromamba
+  fi
+  MAMBA_ROOT_PREFIX="$MAMBA_ROOT_PREFIX" /content/bin/micromamba create -y -p "$PYENV" -c conda-forge python=3.10 pip
 fi
+
 PYTHON="$PYENV/bin/python"
 "$PYTHON" -m pip install -q --upgrade "pip<25"
 
