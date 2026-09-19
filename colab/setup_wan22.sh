@@ -35,6 +35,13 @@ print("flash-attn:", flash_attn.__version__)
 print("torch:", torch.__version__, "cuda:", torch.version.cuda)
 PY
 
+echo "[4.7/5] Senkron video-to-audio sistemi kuruluyor..."
+if [ ! -d /content/MMAudio/.git ]; then
+  git clone -q --depth 1 https://github.com/hkchengrex/MMAudio.git /content/MMAudio
+fi
+# Keep the already-working Colab torch/CUDA stack; install MMAudio without replacing torch.
+python -m pip install -q --disable-pip-version-check -e /content/MMAudio
+
 echo "[5/5] Surum kontrolu ve web arayuzu..."
 python - <<'PY'
 import numpy, transformers, diffusers
