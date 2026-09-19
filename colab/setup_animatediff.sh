@@ -35,6 +35,16 @@ if [ ! -d "$WEBUI/extensions/sd-webui-controlnet/.git" ]; then
 fi
 
 mkdir -p "$WEBUI/models/Stable-diffusion" "$WEBUI/extensions/sd-webui-animatediff/model"
+
+# Always expose the Disney checkpoint from Drive and fail early if it is missing.
+DISNEY="$ROOT/models/disneyPixarCartoon_v10.safetensors"
+if [ ! -s "$DISNEY" ]; then
+  echo "HATA: Disney checkpoint Drive'da bulunamadi: $DISNEY"
+  exit 1
+fi
+ln -sf "$DISNEY" "$WEBUI/models/Stable-diffusion/disneyPixarCartoon_v10.safetensors"
+
+# Also expose any other user checkpoints stored in Drive.
 find "$ROOT/models" -maxdepth 1 -type f \( -name "*.safetensors" -o -name "*.ckpt" \) ! -name "mm_sd15_v2.safetensors" -exec ln -sf {} "$WEBUI/models/Stable-diffusion/" \;
 
 if [ -f "$ROOT/models/mm_sd15_v2.safetensors" ]; then
@@ -63,6 +73,11 @@ try:
 except Exception:
     d={}
 d["pad_cond_uncond"]=True
+d["sd_model_checkpoint"]="disneyPixarCartoon_v10.safetensors"
+d["samples_format"]="png"
+d["grid_format"]="png"
+d["samples_save"]=True
+d["grid_save"]=False
 with open(p,"w") as f:
     json.dump(d,f,indent=2)
 print("Character consistency settings enabled.")
@@ -75,5 +90,5 @@ export python_cmd="$PYTHON"
 # WebUI GUI'siz calistigi icin guvenli non-interactive backend kullan.
 export MPLBACKEND="Agg"
 
-export COMMANDLINE_ARGS="--listen --share --api --opt-sdp-attention --enable-insecure-extension-access"
+export COMMANDLINE_ARGS="--listen --share --api --opt-sdp-attention --enable-insecure-extension-access --ckpt \"$DISNEY\""
 "$PYTHON" launch.py
