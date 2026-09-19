@@ -37,11 +37,17 @@ fi
 mkdir -p "$WEBUI/models/Stable-diffusion" "$WEBUI/extensions/sd-webui-animatediff/model"
 
 # Always expose the Disney checkpoint from Drive and fail early if it is missing.
-DISNEY="$ROOT/models/disneyPixarCartoon_v10.safetensors"
-if [ ! -s "$DISNEY" ]; then
-  echo "HATA: Disney checkpoint Drive'da bulunamadi: $DISNEY"
+DISNEY="$(find "$ROOT/models" -maxdepth 1 -type f -iname 'disneyPixarCartoon_v10.safetensors' -size +100M -print -quit || true)"
+if [ -z "$DISNEY" ]; then
+  echo "Disney checkpoint standart Drive yolunda bulunamadi; MyDrive altinda araniyor..."
+  DISNEY="$(find /content/drive/MyDrive -type f -iname 'disneyPixarCartoon_v10.safetensors' -size +100M -print -quit 2>/dev/null || true)"
+fi
+if [ -z "$DISNEY" ]; then
+  echo "HATA: disneyPixarCartoon_v10.safetensors Drive'da bulunamadi."
+  echo "Drive baglantisini ve dosyanin yuklenmis oldugunu kontrol et."
   exit 1
 fi
+echo "Disney checkpoint bulundu: $DISNEY"
 ln -sf "$DISNEY" "$WEBUI/models/Stable-diffusion/disneyPixarCartoon_v10.safetensors"
 
 # Also expose any other user checkpoints stored in Drive.
@@ -61,7 +67,7 @@ cd "$WEBUI"
 
 # A1111 v1.10.1 / torch 2.1.x and scikit-image wheels require NumPy 1.x ABI.
 # ControlNet may otherwise pull NumPy 2.x and break startup.
-"$PYTHON" -m pip install -q --force-reinstall "numpy==1.26.4" "opencv-python==4.10.0.84" "opencv-python-headless==4.10.0.84" "opencv-contrib-python==4.10.0.84" "mediapipe==0.10.14"
+"$PYTHON" -m pip install -q --force-reinstall "numpy==1.26.4" "opencv-python==4.10.0.84" "opencv-python-headless==4.10.0.84" "opencv-contrib-python==4.10.0.84" "mediapipe==0.10.14" "protobuf==4.25.3"
 
 # AnimateDiff recommends padding positive/negative conditioning to the same length.
 # This reduces unrelated temporal branches between prompt conditions.
