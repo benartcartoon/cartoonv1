@@ -9,7 +9,7 @@ INP=f"{ROOT}/input"
 WAN="/content/Wan2.2"
 os.makedirs(OUT, exist_ok=True); os.makedirs(INP, exist_ok=True)
 
-def generate(image, prompt, frames, steps, seed, auto_audio, audio_prompt):
+def generate(image, prompt, frames, steps, seed, auto_audio, audio_prompt, progress=gr.Progress()):
     if image is None:
         return None, "Referans gorsel yukle."
     if not os.path.isfile(f"{MODEL}/config.json"):
@@ -29,10 +29,27 @@ def generate(image, prompt, frames, steps, seed, auto_audio, audio_prompt):
         "--base_seed",str(int(seed)),
         "--save_file",out
     ]
-    p=subprocess.run(cmd,cwd=WAN,text=True,capture_output=True)
+    progress(0.02, desc="WAN2.2 baslatiliyor / model yukleniyor...")
+    p=subprocess.Popen(cmd,cwd=WAN,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,bufsize=1)
+    logs=[]
+    import re
+    step_re=re.compile(r"(\\d+)\\s*/\\s*(\\d+)")
+    for line in iter(p.stdout.readline, ""):
+        logs.append(line)
+        if len(logs) > 300:
+            logs=logs[-300:]
+        m=step_re.search(line)
+        if m:
+            cur,total=map(int,m.groups())
+            if total > 0 and total <= 200:
+                frac=min(0.92, 0.05 + 0.87*(cur/total))
+                progress(frac, desc=f"Video uretiliyor: {cur}/{total} (%{int(cur*100/total)})")
+    p.wait()
     if p.returncode != 0:
-        return None, "URETIM HATASI:\n"+(p.stderr or p.stdout)[-6000:]
+        return None, "URETIM HATASI:\n"+"".join(logs)[-6000:]
+    progress(0.94, desc="Video tamamlandi; son islemler yapiliyor...")
     if auto_audio:
+        progress(0.95, desc="AI ses uretiliyor...")
         try:
             import torch, soundfile as sf
             from diffusers import AudioLDM2Pipeline
@@ -56,10 +73,12 @@ def generate(image, prompt, frames, steps, seed, auto_audio, audio_prompt):
                 "-c:a","aac","-b:a","192k","-shortest",final
             ],text=True,capture_output=True)
             if m.returncode == 0:
+                progress(1.0, desc="Tamamlandi")
                 return final, f"TAMAMLANDI (SESLI): {final}"
             return out, "Video tamamlandi; ses birlestirme basarisiz oldu. Sessiz video korundu."
         except Exception as e:
             return out, "Video tamamlandi; otomatik ses eklenemedi. Sessiz video korundu. SES HATASI: "+repr(e)
+    progress(1.0, desc="Tamamlandi")
     return out, f"TAMAMLANDI: {out}"
 
 with gr.Blocks(title="CartoonV1 WAN2.2") as demo:
