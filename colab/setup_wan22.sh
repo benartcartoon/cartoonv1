@@ -27,11 +27,12 @@ touch "$MARKER"
 
 echo "[4.5/5] Eksik WAN modulleri kontrol ediliyor..."
 python -m pip install -q --disable-pip-version-check decord
-echo "FlashAttention 2 kuruluyor (WAN2.2 icin zorunlu)..."
-python -m pip install -q --disable-pip-version-check --no-build-isolation flash-attn
+echo "FlashAttention 2 hazir wheel kuruluyor..."
+python -m pip install -q --disable-pip-version-check "https://github.com/lesj0610/flash-attention/releases/download/v2.8.3-cu12-torch2.11/flash_attn-2.8.3%2Bcu12torch2.11cxx11abiTRUE-cp313-cp313-linux_x86_64.whl"
 python - <<'PY'
-import flash_attn
+import flash_attn, torch
 print("flash-attn:", flash_attn.__version__)
+print("torch:", torch.__version__, "cuda:", torch.version.cuda)
 PY
 
 echo "[5/5] Surum kontrolu ve web arayuzu..."
