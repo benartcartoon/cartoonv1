@@ -28,6 +28,12 @@ if [ ! -d "$WEBUI/extensions/sd-webui-animatediff/.git" ]; then
   git clone https://github.com/continue-revolution/sd-webui-animatediff.git "$WEBUI/extensions/sd-webui-animatediff"
 fi
 
+# Character consistency: install ControlNet so AnimateDiff can use a reference image
+# (reference_adain+attn requires no separate ControlNet model download).
+if [ ! -d "$WEBUI/extensions/sd-webui-controlnet/.git" ]; then
+  git clone https://github.com/Mikubill/sd-webui-controlnet.git "$WEBUI/extensions/sd-webui-controlnet"
+fi
+
 mkdir -p "$WEBUI/models/Stable-diffusion" "$WEBUI/extensions/sd-webui-animatediff/model"
 find "$ROOT/models" -maxdepth 1 -type f \( -name "*.safetensors" -o -name "*.ckpt" \) ! -name "mm_sd15_v2.safetensors" -exec ln -sf {} "$WEBUI/models/Stable-diffusion/" \;
 
@@ -42,6 +48,22 @@ rm -rf "$WEBUI/outputs"
 ln -s "$ROOT/output" "$WEBUI/outputs"
 
 cd "$WEBUI"
+
+# AnimateDiff recommends padding positive/negative conditioning to the same length.
+# This reduces unrelated temporal branches between prompt conditions.
+"$PYTHON" - <<'PY'
+import json, os
+p="/content/stable-diffusion-webui/config.json"
+try:
+    d=json.load(open(p)) if os.path.exists(p) else {}
+except Exception:
+    d={}
+d["pad_cond_uncond"]=True
+with open(p,"w") as f:
+    json.dump(d,f,indent=2)
+print("Character consistency settings enabled.")
+PY
+
 export STABLE_DIFFUSION_REPO="https://github.com/w-e-w/stablediffusion.git"
 export python_cmd="$PYTHON"
 
