@@ -17,9 +17,14 @@ test -f "$ROOT/models/Wan2.2-TI2V-5B/config.json" || { echo "HATA: TI2V-5B Drive
 echo "[3/5] Colab paket cakismalari temizleniyor..."
 python -m pip uninstall -y -q jax jaxlib flax optax orbax-checkpoint chex || true
 
-echo "[4/5] WAN2.2 uyumlu surumler kuruluyor..."\necho "    -> numpy / transformers / diffusers / gradio kuruluyor; bu kisim birkaç dakika surebilir..."
-# Resmi WAN2.2: numpy<2 ve transformers<=4.51.3.
-python -m pip install --progress-bar on --disable-pip-version-check --upgrade --force-reinstall   "numpy==1.26.4"   "transformers==4.51.3"   "diffusers==0.35.2"   "huggingface-hub==0.36.0"   "gradio==5.49.1"
+echo "[4/5] WAN2.2 uyumlu surumler kuruluyor..."
+echo "    -> Python 3.13 uyumlu hazir wheel paketleri kullaniliyor; kaynak derleme yapilmayacak..."
+python -m pip install --progress-bar on --disable-pip-version-check --upgrade \
+  "numpy>=2.1,<2.4" \
+  "transformers==4.51.3" \
+  "diffusers==0.35.2" \
+  "huggingface-hub==0.36.0" \
+  "gradio==5.49.1"
 cd "$APP"
 grep -viE '^[[:space:]]*(flash[-_]attn|numpy|transformers|diffusers)' requirements.txt > /tmp/wan22_requirements.txt
 echo "    -> WAN2.2 ana gereksinimleri kuruluyor (pip ayrintilari asagida)..."\npython -m pip install --progress-bar on --disable-pip-version-check -r /tmp/wan22_requirements.txt
