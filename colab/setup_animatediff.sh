@@ -18,9 +18,6 @@ if [ ! -x "$PYENV/bin/python" ]; then
 fi
 
 PYTHON="$PYENV/bin/python"
-
-# A1111 v1.10.1'in eski setup.py paketleri setuptools 84 ile bozuluyor.
-# Calisan eski packaging toolchain'i sabitle.
 "$PYTHON" -m pip install -q --force-reinstall "pip==24.0" "setuptools==69.5.1" "wheel==0.43.0" "packaging<25"
 
 if [ ! -d "$WEBUI/.git" ]; then
@@ -32,7 +29,6 @@ if [ ! -d "$WEBUI/extensions/sd-webui-animatediff/.git" ]; then
 fi
 
 mkdir -p "$WEBUI/models/Stable-diffusion" "$WEBUI/extensions/sd-webui-animatediff/model"
-
 find "$ROOT/models" -maxdepth 1 -type f \( -name "*.safetensors" -o -name "*.ckpt" \) ! -name "mm_sd15_v2.safetensors" -exec ln -sf {} "$WEBUI/models/Stable-diffusion/" \;
 
 if [ -f "$ROOT/models/mm_sd15_v2.safetensors" ]; then
@@ -48,6 +44,10 @@ ln -s "$ROOT/output" "$WEBUI/outputs"
 cd "$WEBUI"
 export STABLE_DIFFUSION_REPO="https://github.com/w-e-w/stablediffusion.git"
 export python_cmd="$PYTHON"
-export COMMANDLINE_ARGS="--listen --share --api --opt-sdp-attention --enable-insecure-extension-access"
 
+# Colab notebook MPLBACKEND degeri izole env'deki matplotlib tarafindan taninmiyor.
+# WebUI GUI'siz calistigi icin guvenli non-interactive backend kullan.
+export MPLBACKEND="Agg"
+
+export COMMANDLINE_ARGS="--listen --share --api --opt-sdp-attention --enable-insecure-extension-access"
 "$PYTHON" launch.py
