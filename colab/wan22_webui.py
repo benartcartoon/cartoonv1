@@ -52,6 +52,18 @@ def generate(image, prompt, frames, steps, seed, auto_audio, audio_prompt, progr
         progress(0.95, desc="AI ses uretiliyor...")
         try:
             import torch, soundfile as sf
+            # AudioLDM2 uses GPT2 internals that changed in newer transformers.
+            # Compatibility shim for current Colab transformers.
+            from transformers import GPT2Model
+            if not hasattr(GPT2Model, "_update_model_kwargs_for_generation"):
+                def _update_model_kwargs_for_generation(self, outputs, model_kwargs, is_encoder_decoder=False, num_new_tokens=1):
+                    if hasattr(outputs, "past_key_values") and outputs.past_key_values is not None:
+                        model_kwargs["past_key_values"] = outputs.past_key_values
+                    if "attention_mask" in model_kwargs and model_kwargs["attention_mask"] is not None:
+                        am=model_kwargs["attention_mask"]
+                        model_kwargs["attention_mask"]=torch.cat([am, am.new_ones((am.shape[0], num_new_tokens))], dim=-1)
+                    return model_kwargs
+                GPT2Model._update_model_kwargs_for_generation=_update_model_kwargs_for_generation
             from diffusers import AudioLDM2Pipeline
             duration=max(1.0, (int(frames)-1)/24.0)
             wav=f"{OUT}/wan22_{stamp}_audio.wav"
