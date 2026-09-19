@@ -51,7 +51,7 @@ cd "$WEBUI"
 
 # A1111 v1.10.1 / torch 2.1.x and scikit-image wheels require NumPy 1.x ABI.
 # ControlNet may otherwise pull NumPy 2.x and break startup.
-"$PYTHON" -m pip install -q --force-reinstall "numpy==1.26.4"
+"$PYTHON" -m pip install -q --force-reinstall "numpy==1.26.4" "opencv-python==4.10.0.84" "opencv-python-headless==4.10.0.84" "opencv-contrib-python==4.10.0.84" "mediapipe==0.10.14"
 
 # AnimateDiff recommends padding positive/negative conditioning to the same length.
 # This reduces unrelated temporal branches between prompt conditions.
