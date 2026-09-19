@@ -48,4 +48,4 @@ with gr.Blocks(title="CartoonV1 WAN2.2") as demo:
     status=gr.Textbox(label="Durum",lines=8)
     btn.click(generate,[image,prompt,frames,steps,seed],[video,status])
 
-demo.queue().launch(share=True, show_error=True)
+demo.queue().launch(share=True, show_error=True, allowed_paths=[OUT, INP])
