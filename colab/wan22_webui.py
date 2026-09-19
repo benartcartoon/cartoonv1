@@ -54,47 +54,30 @@ STRICT STABILITY RULES: Preserve the exact identity, proportions, colors, face, 
         return None, "URETIM HATASI:\n"+"".join(logs)[-6000:]
     progress(0.94, desc="Video tamamlandi; son islemler yapiliyor...")
     if auto_audio:
-        progress(0.95, desc="AI ses uretiliyor...")
+        progress(0.95, desc="Video izleniyor ve hareketlere senkron ses uretiliyor...")
         try:
-            import torch, soundfile as sf
-            # AudioLDM2 uses GPT2 internals that changed in newer transformers.
-            # Compatibility shim for current Colab transformers.
-            from transformers import GPT2Model
-            if not hasattr(GPT2Model, "_update_model_kwargs_for_generation"):
-                def _update_model_kwargs_for_generation(self, outputs, model_kwargs, is_encoder_decoder=False, num_new_tokens=1):
-                    if hasattr(outputs, "past_key_values") and outputs.past_key_values is not None:
-                        model_kwargs["past_key_values"] = outputs.past_key_values
-                    if "attention_mask" in model_kwargs and model_kwargs["attention_mask"] is not None:
-                        am=model_kwargs["attention_mask"]
-                        model_kwargs["attention_mask"]=torch.cat([am, am.new_ones((am.shape[0], num_new_tokens))], dim=-1)
-                    return model_kwargs
-                GPT2Model._update_model_kwargs_for_generation=_update_model_kwargs_for_generation
-            from diffusers import AudioLDM2Pipeline
+            import glob, shutil
+            mma="/content/MMAudio"
+            if not os.path.isfile(f"{mma}/demo.py"):
+                raise RuntimeError("MMAudio kurulu degil.")
             duration=max(1.0, (int(frames)-1)/24.0)
-            wav=f"{OUT}/wan22_{stamp}_audio.wav"
-            final=f"{OUT}/wan22_{stamp}_sesli.mp4"
-            pipe=AudioLDM2Pipeline.from_pretrained("cvssp/audioldm2", torch_dtype=torch.float16)
-            pipe=pipe.to("cuda")
-            audio=pipe(
-                audio_prompt or "cute kitten meowing softly, playful cartoon ambience, clean sound effects",
-                negative_prompt="distorted, noisy, harsh, speech, human voice",
-                num_inference_steps=20,
-                audio_length_in_s=duration
-            ).audios[0]
-            sf.write(wav, audio, 16000)
-            del pipe
-            torch.cuda.empty_cache()
-            m=subprocess.run([
-                "ffmpeg","-y","-i",out,"-i",wav,
-                "-map","0:v:0","-map","1:a:0","-c:v","copy",
-                "-c:a","aac","-b:a","192k","-shortest",final
-            ],text=True,capture_output=True)
-            if m.returncode == 0:
-                progress(1.0, desc="Tamamlandi")
-                return final, f"TAMAMLANDI (SESLI): {final}"
-            return out, "Video tamamlandi; ses birlestirme basarisiz oldu. Sessiz video korundu."
-        except Exception as e:
-            return out, "Video tamamlandi; otomatik ses eklenemedi. Sessiz video korundu. SES HATASI: "+repr(e)
+            before=set(glob.glob(f"{mma}/output/*.mp4"))
+            sfx_prompt=(audio_prompt.strip() if audio_prompt.strip() else "clean synchronized cartoon foley sound effects matching visible actions")
+            sfx_prompt += ". Foley and physical sound effects only. No background music. No melody. No singing. No speech."
+            a=subprocess.run(["python",f"{mma}/demo.py",f"--duration={duration:.3f}",f"--video={out}","--prompt",sfx_prompt,"--negative_prompt","music, background music, melody, song, singing, human speech, dialogue, voice, noisy, distorted"],cwd=mma,text=True,capture_output=True)
+            if a.returncode != 0:
+                raise RuntimeError((a.stderr or a.stdout)[-5000:])
+            after=set(glob.glob(f"{mma}/output/*.mp4"))
+            candidates=list(after-before) or glob.glob(f"{mma}/output/*.mp4")
+            if not candidates:
+                raise RuntimeError("MMAudio cikti videosu bulunamadi.")
+            made=max(candidates,key=os.path.getmtime)
+            final=f"{OUT}/wan22_{stamp}_senkron_sesli.mp4"
+            shutil.copy2(made,final)
+            progress(1.0, desc="Tamamlandi - senkron ses eklendi")
+            return final, f"TAMAMLANDI (SENKRON SES): {final}"
+        except Exception as ex:
+            return out, "Video tamamlandi; senkron ses eklenemedi. Sessiz video korundu. SES HATASI: "+repr(ex)
     progress(1.0, desc="Tamamlandi")
     return out, f"TAMAMLANDI: {out}"
 
@@ -114,38 +97,4 @@ with gr.Blocks(title="CartoonV1 WAN2.2") as demo:
     status=gr.Textbox(label="Durum",lines=8)
     btn.click(generate,[image,prompt,frames,steps,seed,auto_audio,audio_prompt],[video,status])
 
-demo.queue().launch(share=True, show_error=True, allowed_paths=[OUT, INP])    if auto_audio:
-        progress(0.95, desc="Video izleniyor ve hareketlere senkron ses uretiliyor...")
-        try:
-            import glob, shutil
-            mma="/content/MMAudio"
-            if not os.path.isfile(f"{mma}/demo.py"):
-                raise RuntimeError("MMAudio kurulu degil. setup_wan22.sh ile kurulumu yenileyin.")
-            duration=max(1.0, (int(frames)-1)/24.0)
-            before=set(glob.glob(f"{mma}/output/*.mp4"))
-            sfx_prompt=(audio_prompt.strip() if audio_prompt.strip() else
-                "clean synchronized cartoon foley sound effects matching visible actions, no music, no speech")
-            # Strongly suppress the failure mode we saw: unwanted music/voices.
-            sfx_prompt += ". Foley and physical sound effects only. No background music. No melody. No singing. No speech."
-            cmd_audio=[
-                "python",f"{mma}/demo.py",
-                f"--duration={duration:.3f}",
-                f"--video={out}",
-                "--prompt",sfx_prompt,
-                "--negative_prompt","music, background music, melody, song, singing, human speech, dialogue, voice, noisy, distorted"
-            ]
-            a=subprocess.run(cmd_audio,cwd=mma,text=True,capture_output=True)
-            if a.returncode != 0:
-                raise RuntimeError((a.stderr or a.stdout)[-5000:])
-            after=set(glob.glob(f"{mma}/output/*.mp4"))
-            candidates=list(after-before) or glob.glob(f"{mma}/output/*.mp4")
-            if not candidates:
-                raise RuntimeError("MMAudio cikti videosu bulunamadi.")
-            made=max(candidates,key=os.path.getmtime)
-            final=f"{OUT}/wan22_{stamp}_senkron_sesli.mp4"
-            shutil.copy2(made,final)
-            progress(1.0, desc="Tamamlandi - senkron ses eklendi")
-            return final, f"TAMAMLANDI (SENKRON SES): {final}"
-        except Exception as e:
-            return out, "Video tamamlandi; senkron ses eklenemedi. Sessiz video korundu. SES HATASI: "+repr(e)
-
+demo.queue().launch(share=True, show_error=True, allowed_paths=[OUT, INP])
