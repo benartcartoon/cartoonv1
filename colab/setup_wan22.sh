@@ -62,7 +62,12 @@ if [ ! -d /content/MMAudio/.git ]; then
 else
   echo "OK: MMAudio kodu zaten mevcut."
 fi
-python -m pip install --progress-bar on --disable-pip-version-check -e /content/MMAudio
+# MMAudio metadata pins numpy<2.1; on Python 3.13 that selects a source tarball.
+# We already have a working cp313 NumPy wheel, so keep it and install MMAudio deps without dependency re-resolution.
+python -m pip install --progress-bar on --disable-pip-version-check \
+  "av>=14.0.1" colorlog "gitpython>=3.1" hydra-colorlog "hydra-core>=1.3.2" nitrous-ema
+python -m pip install --progress-bar on --disable-pip-version-check --no-deps -e /content/MMAudio
+echo "OK: MMAudio kuruldu; Python 3.13 NumPy wheel korunuyor."
 
 stage "[7/7] Son kontrol ve CartoonV1 arayuzu..."
 python - <<'PY'
