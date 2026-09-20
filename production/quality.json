@@ -1,0 +1,26 @@
+{
+  "shot_seconds": 5,
+  "hard_reject": [
+    "extra_arm",
+    "extra_leg",
+    "extra_foot",
+    "extra_fingers",
+    "missing_limb",
+    "merged_limbs",
+    "duplicate_character",
+    "crossed_eyes",
+    "eye_drift",
+    "face_deformation",
+    "identity_drift",
+    "color_drift",
+    "costume_drift",
+    "prop_teleport",
+    "environment_continuity_error"
+  ],
+  "retry_on_reject": true,
+  "max_retries": 3,
+  "final": {
+    "resolution": "1920x1080",
+    "fps": 60
+  }
+}
