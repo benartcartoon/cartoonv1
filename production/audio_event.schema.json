@@ -1,0 +1,47 @@
+{
+  "type": "object",
+  "required": [
+    "shot",
+    "events"
+  ],
+  "properties": {
+    "shot": {
+      "type": "integer"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "start",
+          "end",
+          "action",
+          "sfx"
+        ],
+        "properties": {
+          "start": {
+            "type": "number"
+          },
+          "end": {
+            "type": "number"
+          },
+          "action": {
+            "type": "string"
+          },
+          "sfx": {
+            "type": "string"
+          },
+          "gain_db": {
+            "type": "number"
+          },
+          "dialogue": {
+            "type": "string"
+          },
+          "lip_sync": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}
