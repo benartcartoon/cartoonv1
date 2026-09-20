@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "locked": true,
+  "home": {
+    "type": "küçük sevimli ahşap orman evi",
+    "chimney": true,
+    "continuity": "ev dışı, odalar, mobilya ve temel eşyaların yerleri onaylı referanslardan değiştirilemez"
+  },
+  "reference_policy": "Drive'daki onaylı ev/oda görselleri tek kaynak kabul edilir."
+}
