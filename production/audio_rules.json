@@ -1,0 +1,17 @@
+{
+  "music": "optional_low_background",
+  "primary": "diegetic_action_sfx",
+  "sync_required": true,
+  "event_schema": [
+    "start",
+    "end",
+    "action",
+    "sfx",
+    "gain"
+  ],
+  "rules": [
+    "Görüntüde belirgin hareket varsa uygun SFX timecode ile eşleştirilir.",
+    "Konuşmada lip-sync kontrolü zorunludur.",
+    "SFX müzik tarafından maskelenmez."
+  ]
+}
