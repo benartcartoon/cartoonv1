@@ -1,18 +1,52 @@
 {
-  "version": 2,
+  "version": 3,
   "rules": {
     "dialogue": false,
     "music_default": false,
     "reuse_character_voice_assets": true,
-    "sync_sfx_to_motion": true
+    "sync_sfx_to_motion": true,
+    "species_from_reference_image": true,
+    "never_infer_species_from_name": true
   },
   "characters": {
-    "miyav": {"sound_id":"MIYAV_VOICE_01","type":"cat","voice":true,"locked":true,"assets":["meow_normal.wav","meow_happy.wav","meow_surprised.wav"]},
-    "yaprak": {"sound_id":"YAPRAK_SFX_01","type":"leaf_character","voice":false,"locked":true,"assets":["leaf_happy.wav","leaf_surprised.wav","leaf_move.wav"]},
-    "pofu": {"sound_id":"POFU_VOICE_01","type":"dog","voice":true,"locked":true,"assets":["bark_normal.wav","bark_happy.wav","whimper.wav"]},
-    "damlacik": {"sound_id":"DAMLA_SFX_01","type":"water_character","voice":false,"locked":true,"assets":["happy_water.wav","surprised_water.wav","water_move.wav"]},
-    "canta": {"sound_id":"CANTA_SILENT","type":"silent","voice":false,"locked":true,"assets":[]}
+    "miyav": {
+      "sound_id": "MIYAV_CAT_01",
+      "type": "cat",
+      "voice": true,
+      "locked": true,
+      "assets": ["meow_normal.wav","meow_happy.wav","meow_surprised.wav"]
+    },
+    "yaprak": {
+      "sound_id": "YAPRAK_CAT_01",
+      "type": "cat",
+      "voice": true,
+      "locked": true,
+      "assets": ["meow_normal.wav","meow_happy.wav","meow_surprised.wav"]
+    },
+    "pofu": {
+      "sound_id": "POFU_DOG_01",
+      "type": "dog",
+      "voice": true,
+      "locked": true,
+      "assets": ["bark_normal.wav","bark_happy.wav","whimper.wav"]
+    },
+    "damla": {
+      "sound_id": "DAMLA_DOG_01",
+      "type": "female_puppy",
+      "voice": true,
+      "locked": true,
+      "assets": ["bark_normal.wav","bark_happy.wav","whimper.wav"]
+    },
+    "canta": {
+      "sound_id": "CANTA_OBJECT_01",
+      "type": "anthropomorphic_backpack",
+      "voice": false,
+      "locked": true,
+      "assets": []
+    }
   },
-  "sfx": {"folders":["footsteps","spray","cloth_wipe","door","objects","jump_land","water","sparkle","impacts","leaf_rustle"]},
+  "sfx": {
+    "folders": ["footsteps","spray","cloth_wipe","door","objects","jump_land","sparkle","impacts"]
+  },
   "timing": {"unit":"seconds","require_event_timestamps":true}
 }
