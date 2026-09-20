@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "locked": true,
+  "characters": [
+    {
+      "name": "Miyav",
+      "role": "ana karakter",
+      "traits": [
+        "yaramaz",
+        "meraklı"
+      ],
+      "visual_lock": "turuncu kedi; onaylı referans görseli zorunlu"
+    },
+    {
+      "name": "Çanta",
+      "traits": [
+        "zeki",
+        "düzenli",
+        "planlı"
+      ],
+      "visual_lock": "onaylı çanta karakter referansı zorunlu"
+    },
+    {
+      "name": "Damlacık",
+      "traits": [
+        "sakin",
+        "toparlayıcı",
+        "temizliği seven"
+      ],
+      "visual_lock": "mavi su damlası; onaylı referans zorunlu"
+    },
+    {
+      "name": "Pofu",
+      "traits": [
+        "utangaç",
+        "iyi niyetli"
+      ],
+      "visual_lock": "onaylı referans zorunlu"
+    },
+    {
+      "name": "Yaprak",
+      "traits": [
+        "neşeli",
+        "enerjik",
+        "doğayı seven"
+      ],
+      "visual_lock": "onaylı referans zorunlu"
+    }
+  ]
+}
