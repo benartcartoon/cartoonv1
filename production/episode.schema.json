@@ -1,0 +1,35 @@
+{
+  "type": "object",
+  "required": [
+    "topic",
+    "duration_sec",
+    "shot_seconds",
+    "shots"
+  ],
+  "properties": {
+    "topic": {
+      "type": "string"
+    },
+    "duration_sec": {
+      "type": "integer",
+      "minimum": 5
+    },
+    "shot_seconds": {
+      "const": 5
+    },
+    "shots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "shot",
+          "start_sec",
+          "end_sec",
+          "action",
+          "negative_prompt",
+          "audio_events"
+        ]
+      }
+    }
+  }
+}
