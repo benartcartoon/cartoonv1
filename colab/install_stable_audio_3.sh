@@ -7,10 +7,12 @@ SA3_DIR="$DRIVE_ROOT/models/stable-audio-3"
 
 echo "=== Stable Audio 3 Small-SFX kurulumu ==="
 
-python - <<'PY'
-from google.colab import drive
-drive.mount('/content/drive')
-PY
+# Drive mounting MUST happen in the Colab notebook kernel, not in a shell subprocess.
+if [ ! -d "/content/drive/MyDrive" ]; then
+  echo "HATA: Google Drive bağlı değil."
+  echo "Önce Colab hücresinde: from google.colab import drive; drive.mount('/content/drive')"
+  exit 2
+fi
 
 if [ ! -d "$REPO_DIR/.git" ]; then
   git clone https://github.com/benartcartoon/cartoonv1.git "$REPO_DIR"
@@ -29,11 +31,8 @@ fi
 
 cd "$SA3_DIR"
 uv sync
-
 mkdir -p "$DRIVE_ROOT/audio/test"
 
 echo
 echo "Kurulum tamamlandı."
-echo "İlk test komutu:"
-echo "cd '$SA3_DIR' && uv run stable-audio --model small-sfx -p 'one short cute gentle kitten meow, isolated sound, no music, no speech' --duration 2 -o '$DRIVE_ROOT/audio/test/miyav_test.wav'"
 echo "tamamlandı"
