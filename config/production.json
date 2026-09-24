@@ -1,0 +1,17 @@
+{
+  "project":"Miyav Cartoon",
+  "drive_root":"/content/drive/MyDrive/MiniMax-H3",
+  "characters_dir":"/content/drive/MyDrive/MiniMax-H3/characters",
+  "episodes_dir":"/content/drive/MyDrive/MiniMax-H3/episodes",
+  "duration_seconds":600,
+  "shot_seconds":15,
+  "shot_count":40,
+  "fps_final":60,
+  "resolution_final":"1920x1080",
+  "max_retries_per_shot":3,
+  "resume":true,
+  "save_each_shot_immediately":true,
+  "use_previous_last_frame":true,
+  "use_locked_character_references":true,
+  "human_dialogue":false
+}
