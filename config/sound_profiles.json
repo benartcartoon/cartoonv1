@@ -1,52 +1,19 @@
 {
-  "version": 3,
+  "version": 4,
+  "locked": true,
   "rules": {
-    "dialogue": false,
+    "human_dialogue": false,
+    "spoken_language": false,
     "music_default": false,
     "reuse_character_voice_assets": true,
     "sync_sfx_to_motion": true,
-    "species_from_reference_image": true,
-    "never_infer_species_from_name": true
+    "voice_identity_must_never_change": true
   },
   "characters": {
-    "miyav": {
-      "sound_id": "MIYAV_CAT_01",
-      "type": "cat",
-      "voice": true,
-      "locked": true,
-      "assets": ["meow_normal.wav","meow_happy.wav","meow_surprised.wav"]
-    },
-    "yaprak": {
-      "sound_id": "YAPRAK_CAT_01",
-      "type": "cat",
-      "voice": true,
-      "locked": true,
-      "assets": ["meow_normal.wav","meow_happy.wav","meow_surprised.wav"]
-    },
-    "pofu": {
-      "sound_id": "POFU_DOG_01",
-      "type": "dog",
-      "voice": true,
-      "locked": true,
-      "assets": ["bark_normal.wav","bark_happy.wav","whimper.wav"]
-    },
-    "damla": {
-      "sound_id": "DAMLA_DOG_01",
-      "type": "female_puppy",
-      "voice": true,
-      "locked": true,
-      "assets": ["bark_normal.wav","bark_happy.wav","whimper.wav"]
-    },
-    "canta": {
-      "sound_id": "CANTA_OBJECT_01",
-      "type": "anthropomorphic_backpack",
-      "voice": false,
-      "locked": true,
-      "assets": []
-    }
-  },
-  "sfx": {
-    "folders": ["footsteps","spray","cloth_wipe","door","objects","jump_land","sparkle","impacts"]
-  },
-  "timing": {"unit":"seconds","require_event_timestamps":true}
+    "miyav":{"sound_id":"MIYAV_CAT_01","type":"cat","style":"mischievous expressive meows","locked":true},
+    "damla":{"sound_id":"DAMLA_DOG_01","type":"female_puppy","style":"controlled serious puppy barks and reactions","locked":true},
+    "pofu":{"sound_id":"POFU_DOG_01","type":"dog","style":"innocent clumsy puppy barks, yelps and whimpers","locked":true},
+    "yaprak":{"sound_id":"YAPRAK_CAT_01","type":"cat","style":"soft sleepy relaxed meows","locked":true},
+    "canta":{"sound_id":"CANTA_OBJECT_01","type":"anthropomorphic_backpack","style":"fixed non-human teacher character vocal sounds; never normal human speech","locked":true}
+  }
 }
