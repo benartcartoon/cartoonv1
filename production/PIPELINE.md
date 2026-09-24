@@ -1,19 +1,24 @@
-# Profesyonel üretim zinciri
+# Miyav Cartoon — 10 Dakikalık Otomatik Üretim Zinciri
 
-1. Konu + toplam süre alınır.
-2. Süre 5 saniyelik shot'lara otomatik bölünür.
-3. Her shot onaylı karakter ve dünya referanslarını zorunlu kullanır.
-4. WAN2.2 her shot'ı ayrı üretir.
-5. QC kapısı: ekstra/eksik uzuv, göz kayması, yüz/kimlik/renk sapması, duplicate karakter, prop/environment continuity hatası -> RED -> yeniden üretim (maksimum 3 deneme).
-6. Görünen hareketlerden timecode'lu diegetic SFX planı çıkarılır. Diyalog varsa lip-sync zorunludur. Müzik isteğe bağlı/düşük seviyededir.
-7. Tüm shot'lar PASS olmadan final birleştirme başlamaz.
-8. Shot'lar sırayla birleştirilir.
-9. Final 1920x1080 ve 60 FPS'e dönüştürülür.
-10. Final QC sonrası Drive output'a yazılır.
+1. Colab'da tek başlangıç hücresi çalıştırılır.
+2. Drive'daki `MiniMax-H3/characters` klasörü sabit karakter kütüphanesidir.
+3. Bölüm hedefi 600 saniyedir ve 15 saniyelik 40 sahneye bölünür.
+4. Her sahne için gerekli karakter referansları `characters.json` üzerinden otomatik seçilir.
+5. Sahne 1 ana referanslarla başlar. Sahne N>1 için önceki PASS sahnesinin son karesi continuity referansı olarak çıkarılır ve gerekli sabit karakter referanslarıyla birlikte kullanılır.
+6. Her sahne tamamlanır tamamlanmaz Drive'a atomik olarak kaydedilir; `state.json` güncellenir.
+7. Bir sahne hata verirse önceki başarılı sahneler korunur; aynı sahne yeniden denenir. Varsayılan maksimum deneme 3'tür.
+8. Colab koparsa yeniden başlatıldığında `state.json` ve mevcut PASS dosyaları okunur; ilk eksik/başarısız sahneden devam edilir.
+9. Karakter görünümü, kişiliği ve voice_id kilitlidir. İnsan konuşması yoktur.
+10. 40 sahnenin tamamı PASS olmadan final birleştirme yapılmaz.
+11. Final yaklaşık 10 dakika, 1920x1080, 60 FPS olarak Drive'a yazılır.
 
-## Güvenli tasarım
-Pipeline QC yapılmadığını başarı saymaz. Her shot için `shot_XX.mp4.qc.json` gerekir:
-```json
-{"pass": true, "reasons": []}
-```
-Otomatik görsel QC modeli bağlandığında aynı sözleşmeyi kullanır.
+## Drive düzeni
+`MiniMax-H3/characters/` sabit referanslar.
+`MiniMax-H3/episodes/episode_001/plan.json` 40 sahnelik plan.
+`.../shots/shot_001.mp4` ... `shot_040.mp4`.
+`.../frames/shot_001_last.png` continuity kareleri.
+`.../state.json` kaldığı yer ve deneme sayıları.
+`.../final/episode_001.mp4` final video.
+
+## Prompt kilidi
+Her sahne promptuna otomatik olarak karakterin görünüm kilidi + kişilik özellikleri + non-human voice_id eklenir. Bu kurallar sahne metni tarafından geçersiz kılınamaz.
