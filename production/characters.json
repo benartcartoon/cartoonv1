@@ -1,50 +1,12 @@
 {
-  "version": 1,
+  "version": 2,
   "locked": true,
+  "reference_root": "/content/drive/MyDrive/MiniMax-H3/characters",
   "characters": [
-    {
-      "name": "Miyav",
-      "role": "ana karakter",
-      "traits": [
-        "yaramaz",
-        "meraklı"
-      ],
-      "visual_lock": "turuncu kedi; onaylı referans görseli zorunlu"
-    },
-    {
-      "name": "Çanta",
-      "traits": [
-        "zeki",
-        "düzenli",
-        "planlı"
-      ],
-      "visual_lock": "onaylı çanta karakter referansı zorunlu"
-    },
-    {
-      "name": "Damlacık",
-      "traits": [
-        "sakin",
-        "toparlayıcı",
-        "temizliği seven"
-      ],
-      "visual_lock": "mavi su damlası; onaylı referans zorunlu"
-    },
-    {
-      "name": "Pofu",
-      "traits": [
-        "utangaç",
-        "iyi niyetli"
-      ],
-      "visual_lock": "onaylı referans zorunlu"
-    },
-    {
-      "name": "Yaprak",
-      "traits": [
-        "neşeli",
-        "enerjik",
-        "doğayı seven"
-      ],
-      "visual_lock": "onaylı referans zorunlu"
-    }
+    {"id":"miyav","name":"Miyav","role":"ana karakter","traits":["yaramaz","meraklı"],"species":"cat","reference_candidates":["miyav.png"],"voice_id":"MIYAV_CAT_01","visual_lock":"turuncu-beyaz kedi; onaylı Drive referansı zorunlu"},
+    {"id":"canta","name":"Çanta","role":"öğretmen","traits":["öğretmen","zeki","düzenli","planlı"],"species":"anthropomorphic_backpack","reference_candidates":["çanta.png","canta.png"],"voice_id":"CANTA_OBJECT_01","visual_lock":"kahverengi antropomorfik çanta; onaylı Drive referansı zorunlu"},
+    {"id":"damla","name":"Damla","role":"ana ekip","traits":["temizliği seven","ciddi"],"species":"female_puppy","reference_candidates":["damla.png","damla"],"voice_id":"DAMLA_DOG_01","visual_lock":"mavi-beyaz dişi köpek yavrusu; onaylı Drive referansı zorunlu"},
+    {"id":"pofu","name":"Pofu","role":"ana ekip","traits":["saf","sakar","iyi niyetli"],"species":"dog","reference_candidates":["pofu.png","pofu"],"voice_id":"POFU_DOG_01","visual_lock":"beyaz-kahverengi köpek yavrusu; onaylı Drive referansı zorunlu"},
+    {"id":"yaprak","name":"Yaprak","role":"ana ekip","traits":["doğayı seven","uykucu"],"species":"cat","reference_candidates":["yaprak.png","yaprak"],"voice_id":"YAPRAK_CAT_01","visual_lock":"gri-beyaz kedi, yeşil gözler ve yeşil yaprak aksesuarı; onaylı Drive referansı zorunlu"}
   ]
 }
