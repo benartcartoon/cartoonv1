@@ -1,0 +1,730 @@
+{
+  "title": "Büyük Temizlik Günü",
+  "duration_target_sec": 600,
+  "logical_scene_seconds": 15,
+  "logical_scene_count": 40,
+  "render_shot_seconds_approx": 5,
+  "shot_count": 120,
+  "shots": [
+    {
+      "shot": 1,
+      "scene": 1,
+      "part": 1,
+      "prompt": "Story action: Miyav sabah ahşap evde erkenden uyanır ve oyun ararken ortalığı karıştırır. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 2,
+      "scene": 1,
+      "part": 2,
+      "prompt": "Story action: Miyav sabah ahşap evde erkenden uyanır ve oyun ararken ortalığı karıştırır. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 3,
+      "scene": 1,
+      "part": 3,
+      "prompt": "Story action: Miyav sabah ahşap evde erkenden uyanır ve oyun ararken ortalığı karıştırır. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 4,
+      "scene": 2,
+      "part": 1,
+      "prompt": "Story action: Çanta öğretmen evi düzenli tutmanın önemini işaretlerle anlatır. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 5,
+      "scene": 2,
+      "part": 2,
+      "prompt": "Story action: Çanta öğretmen evi düzenli tutmanın önemini işaretlerle anlatır. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 6,
+      "scene": 2,
+      "part": 3,
+      "prompt": "Story action: Çanta öğretmen evi düzenli tutmanın önemini işaretlerle anlatır. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 7,
+      "scene": 3,
+      "part": 1,
+      "prompt": "Story action: Damla dağınıklığı görür, ciddi biçimde temizlik malzemelerini hazırlar. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 8,
+      "scene": 3,
+      "part": 2,
+      "prompt": "Story action: Damla dağınıklığı görür, ciddi biçimde temizlik malzemelerini hazırlar. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 9,
+      "scene": 3,
+      "part": 3,
+      "prompt": "Story action: Damla dağınıklığı görür, ciddi biçimde temizlik malzemelerini hazırlar. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 10,
+      "scene": 4,
+      "part": 1,
+      "prompt": "Story action: Pofu yardım etmek isterken kovaya takılıp komikçe sendeleyerek ortalığı biraz daha dağıtır. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 11,
+      "scene": 4,
+      "part": 2,
+      "prompt": "Story action: Pofu yardım etmek isterken kovaya takılıp komikçe sendeleyerek ortalığı biraz daha dağıtır. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 12,
+      "scene": 4,
+      "part": 3,
+      "prompt": "Story action: Pofu yardım etmek isterken kovaya takılıp komikçe sendeleyerek ortalığı biraz daha dağıtır. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 13,
+      "scene": 5,
+      "part": 1,
+      "prompt": "Story action: Yaprak pencere kenarında uykulu halde uyanır ve dışarıdaki yaprakları fark eder. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 14,
+      "scene": 5,
+      "part": 2,
+      "prompt": "Story action: Yaprak pencere kenarında uykulu halde uyanır ve dışarıdaki yaprakları fark eder. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 15,
+      "scene": 5,
+      "part": 3,
+      "prompt": "Story action: Yaprak pencere kenarında uykulu halde uyanır ve dışarıdaki yaprakları fark eder. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 16,
+      "scene": 6,
+      "part": 1,
+      "prompt": "Story action: Miyav süpürgeyi oyuncak sanıp peşinden koşar. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 17,
+      "scene": 6,
+      "part": 2,
+      "prompt": "Story action: Miyav süpürgeyi oyuncak sanıp peşinden koşar. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 18,
+      "scene": 6,
+      "part": 3,
+      "prompt": "Story action: Miyav süpürgeyi oyuncak sanıp peşinden koşar. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 19,
+      "scene": 7,
+      "part": 1,
+      "prompt": "Story action: Damla Miyav'ın bıraktığı izleri sabırla temizler. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 20,
+      "scene": 7,
+      "part": 2,
+      "prompt": "Story action: Damla Miyav'ın bıraktığı izleri sabırla temizler. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 21,
+      "scene": 7,
+      "part": 3,
+      "prompt": "Story action: Damla Miyav'ın bıraktığı izleri sabırla temizler. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 22,
+      "scene": 8,
+      "part": 1,
+      "prompt": "Story action: Çanta görevleri resimli kartlarla paylaştırır. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 23,
+      "scene": 8,
+      "part": 2,
+      "prompt": "Story action: Çanta görevleri resimli kartlarla paylaştırır. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 24,
+      "scene": 8,
+      "part": 3,
+      "prompt": "Story action: Çanta görevleri resimli kartlarla paylaştırır. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 25,
+      "scene": 9,
+      "part": 1,
+      "prompt": "Story action: Pofu bezleri taşırken yanlışlıkla kendi üzerine düşürür. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 26,
+      "scene": 9,
+      "part": 2,
+      "prompt": "Story action: Pofu bezleri taşırken yanlışlıkla kendi üzerine düşürür. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 27,
+      "scene": 9,
+      "part": 3,
+      "prompt": "Story action: Pofu bezleri taşırken yanlışlıkla kendi üzerine düşürür. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 28,
+      "scene": 10,
+      "part": 1,
+      "prompt": "Story action: Yaprak ev bitkilerini nazikçe düzenler ve tekrar esner. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 29,
+      "scene": 10,
+      "part": 2,
+      "prompt": "Story action: Yaprak ev bitkilerini nazikçe düzenler ve tekrar esner. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 30,
+      "scene": 10,
+      "part": 3,
+      "prompt": "Story action: Yaprak ev bitkilerini nazikçe düzenler ve tekrar esner. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 31,
+      "scene": 11,
+      "part": 1,
+      "prompt": "Story action: Ekip mutfağa geçer; Miyav masanın altından gizlice çıkar. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 32,
+      "scene": 11,
+      "part": 2,
+      "prompt": "Story action: Ekip mutfağa geçer; Miyav masanın altından gizlice çıkar. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 33,
+      "scene": 11,
+      "part": 3,
+      "prompt": "Story action: Ekip mutfağa geçer; Miyav masanın altından gizlice çıkar. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 34,
+      "scene": 12,
+      "part": 1,
+      "prompt": "Story action: Damla tezgahı titizlikle silerken Miyav köpüklerle oynamaya çalışır. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 35,
+      "scene": 12,
+      "part": 2,
+      "prompt": "Story action: Damla tezgahı titizlikle silerken Miyav köpüklerle oynamaya çalışır. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 36,
+      "scene": 12,
+      "part": 3,
+      "prompt": "Story action: Damla tezgahı titizlikle silerken Miyav köpüklerle oynamaya çalışır. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 37,
+      "scene": 13,
+      "part": 1,
+      "prompt": "Story action: Pofu tabakları dikkatle taşımaya çalışır ve komik biçimde dengesini toparlar. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 38,
+      "scene": 13,
+      "part": 2,
+      "prompt": "Story action: Pofu tabakları dikkatle taşımaya çalışır ve komik biçimde dengesini toparlar. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 39,
+      "scene": 13,
+      "part": 3,
+      "prompt": "Story action: Pofu tabakları dikkatle taşımaya çalışır ve komik biçimde dengesini toparlar. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 40,
+      "scene": 14,
+      "part": 1,
+      "prompt": "Story action: Çanta güvenli ve düzenli çalışma hareketlerini gösterir. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 41,
+      "scene": 14,
+      "part": 2,
+      "prompt": "Story action: Çanta güvenli ve düzenli çalışma hareketlerini gösterir. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 42,
+      "scene": 14,
+      "part": 3,
+      "prompt": "Story action: Çanta güvenli ve düzenli çalışma hareketlerini gösterir. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 43,
+      "scene": 15,
+      "part": 1,
+      "prompt": "Story action: Yaprak pencereden içeri düşen küçük bir yaprağı fark edip dışarı çıkar. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 44,
+      "scene": 15,
+      "part": 2,
+      "prompt": "Story action: Yaprak pencereden içeri düşen küçük bir yaprağı fark edip dışarı çıkar. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 45,
+      "scene": 15,
+      "part": 3,
+      "prompt": "Story action: Yaprak pencereden içeri düşen küçük bir yaprağı fark edip dışarı çıkar. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 46,
+      "scene": 16,
+      "part": 1,
+      "prompt": "Story action: Ekip bahçeye geçer ve doğa temizliğine başlar. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 47,
+      "scene": 16,
+      "part": 2,
+      "prompt": "Story action: Ekip bahçeye geçer ve doğa temizliğine başlar. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 48,
+      "scene": 16,
+      "part": 3,
+      "prompt": "Story action: Ekip bahçeye geçer ve doğa temizliğine başlar. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 49,
+      "scene": 17,
+      "part": 1,
+      "prompt": "Story action: Yaprak yerdeki sağlıklı bitkileri koruyarak ekibe nereden geçeceklerini gösterir. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 50,
+      "scene": 17,
+      "part": 2,
+      "prompt": "Story action: Yaprak yerdeki sağlıklı bitkileri koruyarak ekibe nereden geçeceklerini gösterir. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 51,
+      "scene": 17,
+      "part": 3,
+      "prompt": "Story action: Yaprak yerdeki sağlıklı bitkileri koruyarak ekibe nereden geçeceklerini gösterir. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 52,
+      "scene": 18,
+      "part": 1,
+      "prompt": "Story action: Miyav kuru yaprak yığınının içine neşeyle atlar. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 53,
+      "scene": 18,
+      "part": 2,
+      "prompt": "Story action: Miyav kuru yaprak yığınının içine neşeyle atlar. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 54,
+      "scene": 18,
+      "part": 3,
+      "prompt": "Story action: Miyav kuru yaprak yığınının içine neşeyle atlar. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 55,
+      "scene": 19,
+      "part": 1,
+      "prompt": "Story action: Damla ciddi bir bakışla dağılan yaprakları yeniden toplar. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 56,
+      "scene": 19,
+      "part": 2,
+      "prompt": "Story action: Damla ciddi bir bakışla dağılan yaprakları yeniden toplar. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 57,
+      "scene": 19,
+      "part": 3,
+      "prompt": "Story action: Damla ciddi bir bakışla dağılan yaprakları yeniden toplar. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 58,
+      "scene": 20,
+      "part": 1,
+      "prompt": "Story action: Pofu büyük torbayı taşırken geriye doğru yürüyüp yumuşakça oturur. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 59,
+      "scene": 20,
+      "part": 2,
+      "prompt": "Story action: Pofu büyük torbayı taşırken geriye doğru yürüyüp yumuşakça oturur. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 60,
+      "scene": 20,
+      "part": 3,
+      "prompt": "Story action: Pofu büyük torbayı taşırken geriye doğru yürüyüp yumuşakça oturur. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 61,
+      "scene": 21,
+      "part": 1,
+      "prompt": "Story action: Çanta herkesi yeniden organize eder. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 62,
+      "scene": 21,
+      "part": 2,
+      "prompt": "Story action: Çanta herkesi yeniden organize eder. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 63,
+      "scene": 21,
+      "part": 3,
+      "prompt": "Story action: Çanta herkesi yeniden organize eder. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 64,
+      "scene": 22,
+      "part": 1,
+      "prompt": "Story action: Miyav bu kez gerçekten yardım etmeye karar verir ve küçük yaprakları toplar. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 65,
+      "scene": 22,
+      "part": 2,
+      "prompt": "Story action: Miyav bu kez gerçekten yardım etmeye karar verir ve küçük yaprakları toplar. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 66,
+      "scene": 22,
+      "part": 3,
+      "prompt": "Story action: Miyav bu kez gerçekten yardım etmeye karar verir ve küçük yaprakları toplar. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 67,
+      "scene": 23,
+      "part": 1,
+      "prompt": "Story action: Damla Miyav'ın düzgün çalıştığını görünce memnun olur. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 68,
+      "scene": 23,
+      "part": 2,
+      "prompt": "Story action: Damla Miyav'ın düzgün çalıştığını görünce memnun olur. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 69,
+      "scene": 23,
+      "part": 3,
+      "prompt": "Story action: Damla Miyav'ın düzgün çalıştığını görünce memnun olur. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 70,
+      "scene": 24,
+      "part": 1,
+      "prompt": "Story action: Pofu küçük dalları toplar ama bir dal şapkasına takılmış gibi komik görünür. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 71,
+      "scene": 24,
+      "part": 2,
+      "prompt": "Story action: Pofu küçük dalları toplar ama bir dal şapkasına takılmış gibi komik görünür. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 72,
+      "scene": 24,
+      "part": 3,
+      "prompt": "Story action: Pofu küçük dalları toplar ama bir dal şapkasına takılmış gibi komik görünür. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 73,
+      "scene": 25,
+      "part": 1,
+      "prompt": "Story action: Yaprak bir kelebeği izlerken kısa süreliğine görevi unutur. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 74,
+      "scene": 25,
+      "part": 2,
+      "prompt": "Story action: Yaprak bir kelebeği izlerken kısa süreliğine görevi unutur. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 75,
+      "scene": 25,
+      "part": 3,
+      "prompt": "Story action: Yaprak bir kelebeği izlerken kısa süreliğine görevi unutur. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 76,
+      "scene": 26,
+      "part": 1,
+      "prompt": "Story action: Çanta nazikçe ekibi tekrar işe yönlendirir. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 77,
+      "scene": 26,
+      "part": 2,
+      "prompt": "Story action: Çanta nazikçe ekibi tekrar işe yönlendirir. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 78,
+      "scene": 26,
+      "part": 3,
+      "prompt": "Story action: Çanta nazikçe ekibi tekrar işe yönlendirir. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 79,
+      "scene": 27,
+      "part": 1,
+      "prompt": "Story action: Ekip evin önünü birlikte temizler. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 80,
+      "scene": 27,
+      "part": 2,
+      "prompt": "Story action: Ekip evin önünü birlikte temizler. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 81,
+      "scene": 27,
+      "part": 3,
+      "prompt": "Story action: Ekip evin önünü birlikte temizler. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 82,
+      "scene": 28,
+      "part": 1,
+      "prompt": "Story action: Miyav küçük süpürgeyle hızlı çalışıp yine biraz yaramazlık yapar. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 83,
+      "scene": 28,
+      "part": 2,
+      "prompt": "Story action: Miyav küçük süpürgeyle hızlı çalışıp yine biraz yaramazlık yapar. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 84,
+      "scene": 28,
+      "part": 3,
+      "prompt": "Story action: Miyav küçük süpürgeyle hızlı çalışıp yine biraz yaramazlık yapar. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 85,
+      "scene": 29,
+      "part": 1,
+      "prompt": "Story action: Damla son ayrıntıları kontrol eder. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 86,
+      "scene": 29,
+      "part": 2,
+      "prompt": "Story action: Damla son ayrıntıları kontrol eder. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 87,
+      "scene": 29,
+      "part": 3,
+      "prompt": "Story action: Damla son ayrıntıları kontrol eder. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 88,
+      "scene": 30,
+      "part": 1,
+      "prompt": "Story action: Pofu çöp torbasını doğru yere götürmeyi sonunda başarır. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 89,
+      "scene": 30,
+      "part": 2,
+      "prompt": "Story action: Pofu çöp torbasını doğru yere götürmeyi sonunda başarır. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 90,
+      "scene": 30,
+      "part": 3,
+      "prompt": "Story action: Pofu çöp torbasını doğru yere götürmeyi sonunda başarır. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 91,
+      "scene": 31,
+      "part": 1,
+      "prompt": "Story action: Yaprak temiz bahçede çiçeklerin yanında dinlenir. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 92,
+      "scene": 31,
+      "part": 2,
+      "prompt": "Story action: Yaprak temiz bahçede çiçeklerin yanında dinlenir. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 93,
+      "scene": 31,
+      "part": 3,
+      "prompt": "Story action: Yaprak temiz bahçede çiçeklerin yanında dinlenir. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 94,
+      "scene": 32,
+      "part": 1,
+      "prompt": "Story action: Çanta yapılan işleri kontrol eder ve onay işareti verir. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 95,
+      "scene": 32,
+      "part": 2,
+      "prompt": "Story action: Çanta yapılan işleri kontrol eder ve onay işareti verir. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 96,
+      "scene": 32,
+      "part": 3,
+      "prompt": "Story action: Çanta yapılan işleri kontrol eder ve onay işareti verir. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 97,
+      "scene": 33,
+      "part": 1,
+      "prompt": "Story action: Miyav temiz eve girerken patilerini kontrol eder. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 98,
+      "scene": 33,
+      "part": 2,
+      "prompt": "Story action: Miyav temiz eve girerken patilerini kontrol eder. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 99,
+      "scene": 33,
+      "part": 3,
+      "prompt": "Story action: Miyav temiz eve girerken patilerini kontrol eder. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 100,
+      "scene": 34,
+      "part": 1,
+      "prompt": "Story action: Damla kapının yanında patileri temizlemek için küçük bir alan hazırlar. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 101,
+      "scene": 34,
+      "part": 2,
+      "prompt": "Story action: Damla kapının yanında patileri temizlemek için küçük bir alan hazırlar. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 102,
+      "scene": 34,
+      "part": 3,
+      "prompt": "Story action: Damla kapının yanında patileri temizlemek için küçük bir alan hazırlar. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 103,
+      "scene": 35,
+      "part": 1,
+      "prompt": "Story action: Pofu kurala uymaya çalışırken iki ayağını aynı anda kaldırıp komikçe dengede kalır. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 104,
+      "scene": 35,
+      "part": 2,
+      "prompt": "Story action: Pofu kurala uymaya çalışırken iki ayağını aynı anda kaldırıp komikçe dengede kalır. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 105,
+      "scene": 35,
+      "part": 3,
+      "prompt": "Story action: Pofu kurala uymaya çalışırken iki ayağını aynı anda kaldırıp komikçe dengede kalır. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 106,
+      "scene": 36,
+      "part": 1,
+      "prompt": "Story action: Yaprak pencere yanındaki rahat yerine kıvrılır. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 107,
+      "scene": 36,
+      "part": 2,
+      "prompt": "Story action: Yaprak pencere yanındaki rahat yerine kıvrılır. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 108,
+      "scene": 36,
+      "part": 3,
+      "prompt": "Story action: Yaprak pencere yanındaki rahat yerine kıvrılır. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 109,
+      "scene": 37,
+      "part": 1,
+      "prompt": "Story action: Çanta herkese tamamlanan görevleri gösterir. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 110,
+      "scene": 37,
+      "part": 2,
+      "prompt": "Story action: Çanta herkese tamamlanan görevleri gösterir. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 111,
+      "scene": 37,
+      "part": 3,
+      "prompt": "Story action: Çanta herkese tamamlanan görevleri gösterir. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 112,
+      "scene": 38,
+      "part": 1,
+      "prompt": "Story action: Miyav gizlice küçük bir oyuncak çıkarır ama bu kez etrafı dağıtmaz. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 113,
+      "scene": 38,
+      "part": 2,
+      "prompt": "Story action: Miyav gizlice küçük bir oyuncak çıkarır ama bu kez etrafı dağıtmaz. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 114,
+      "scene": 38,
+      "part": 3,
+      "prompt": "Story action: Miyav gizlice küçük bir oyuncak çıkarır ama bu kez etrafı dağıtmaz. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 115,
+      "scene": 39,
+      "part": 1,
+      "prompt": "Story action: Ekip temiz ve sıcak evde birlikte rahatlar. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 116,
+      "scene": 39,
+      "part": 2,
+      "prompt": "Story action: Ekip temiz ve sıcak evde birlikte rahatlar. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 117,
+      "scene": 39,
+      "part": 3,
+      "prompt": "Story action: Ekip temiz ve sıcak evde birlikte rahatlar. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 118,
+      "scene": 40,
+      "part": 1,
+      "prompt": "Story action: Gün batımında beş arkadaş evin önünde mutlu biçimde bir araya gelir ve bölüm sıcak bir final görüntüsüyle biter. Phase 1/3: establish the action clearly with calm natural movement. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 119,
+      "scene": 40,
+      "part": 2,
+      "prompt": "Story action: Gün batımında beş arkadaş evin önünde mutlu biçimde bir araya gelir ve bölüm sıcak bir final görüntüsüyle biter. Phase 2/3: continue the same action with expressive reactions and exact continuity. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    },
+    {
+      "shot": 120,
+      "scene": 40,
+      "part": 3,
+      "prompt": "Story action: Gün batımında beş arkadaş evin önünde mutlu biçimde bir araya gelir ve bölüm sıcak bir final görüntüsüyle biter. Phase 3/3: complete the action and end in a stable pose suitable for the next shot. Continue seamlessly from the previous frame. Keep the same environment, lighting, character identities and object positions."
+    }
+  ]
+}
