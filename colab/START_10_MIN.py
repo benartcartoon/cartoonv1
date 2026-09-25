@@ -58,19 +58,23 @@ if not alive():
     subprocess.run(["bash","-lc","pkill -f '/MiniMax-H3/ComfyUI/main.py' 2>/dev/null || true"],check=False)
     time.sleep(1)
     log=open("/content/comfy_minimax.log","w")
-    subprocess.Popen(
+    p=subprocess.Popen(
         [sys.executable,"-u",COMFY+"/main.py","--listen","127.0.0.1","--port","8188"],
         cwd=COMFY,stdout=log,stderr=subprocess.STDOUT
     )
-    for _ in range(120):
-        if alive():
-            break
-        time.sleep(2)
-    else:
-        log.flush()
-        tail=open("/content/comfy_minimax.log",errors="ignore").read()[-12000:]
-        print(tail)
-        raise RuntimeError("ComfyUI baslamadi; yukaridaki log son hatayi gosteriyor.")
+    # Drive uzerinden ilk acilis A100'de bile uzun surebilir.
+    # Sabit timeout ile saglikli sureci yanlislikla hata sayma.
+    waited=0
+    while not alive():
+        if p.poll() is not None:
+            log.flush()
+            tail=open("/content/comfy_minimax.log",errors="ignore").read()[-12000:]
+            print(tail)
+            raise RuntimeError("ComfyUI sureci kapandi; yukaridaki log son hatayi gosteriyor.")
+        time.sleep(5)
+        waited += 5
+        if waited % 60 == 0:
+            print(f"ComfyUI yukleniyor... {waited//60} dk")
 
 print("OK - ComfyUI calisiyor")
 print("4/4 Arayuz aciliyor...")
