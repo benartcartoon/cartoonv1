@@ -5,9 +5,9 @@ Bu klasör, YouTube çizgi filminin hikâye ve bölüm sırasını birlikte olu�
 ## Seri omurgası
 - Dünya: Ormanın içindeki küçük, bacalı ahşap ev ve çevresi. Ev, odaları, eşyaları ve karakter görünüşleri bölümler arasında tutarlı kalır.
 - Biçim: Görüntüyle anlaşılabilen, sıcak ve komik olaylar; her bölümde başlangıç, gelişme ve sonuç.
-- Süre: Bölüm hedefi yaklaşık 10 dakika; sahne ve çekim süreleri üretimden sonra netleşir.
+- Üretim: 30 saniyelik video parçaları hazırlanıp sırayla birleştirilir. Yaklaşık 10 dakikalık bölüm için kurguya göre yaklaşık 20 parça gerekir; nihai süre kurgu sırasında belirlenir.
 - Bölümler birbirinin devamı olacak. Daha önce üretilmiş çizgi film görüntülerinin olay sırası ve bitiş karesi belirlenince ilk yeni sahne oradan başlar.
-- Karakterler insan gibi konuşmaz; kendilerine özgü, bölümler arasında aynı kalan ses ve tepki kimlikleri kullanılır.
+- Karakterler insan gibi konuşmaz. Kedi yalnızca kedi, köpek yalnızca köpek, civciv yalnızca civciv sesi çıkarır. Her karakterin kendi türü içinde ayırt edilebilir ve bölümler arasında değişmeyen ses kimliği vardır; Çanta da konuşmadan kendine özgü sözsüz sesler ve hareketlerle iletişim kurar.
 
 ## Güncel karakter pusulası
 - Miyav: Turuncu-beyaz, yeşil gözlü, kırmızı tasmalı yaramaz kedi yavrusu; şakaları çoğunlukla o başlatır.
@@ -15,7 +15,7 @@ Bu klasör, YouTube çizgi filminin hikâye ve bölüm sırasını birlikte olu�
 - Pofu: Beyaz-kahverengi, saf ve sakar köpek yavrusu.
 - Yaprak: Gri-beyaz, büyük yeşil gözlü, yeşil yaprak kurdeleli ve yaprak kolyeli kedi yavrusu; doğayı sever ve uykucudur.
 - Çanta: Kahverengi, siyah gözlüklü ve spor ayakkabılı antropomorfik sırt çantası; öğretmen rolündedir.
-- Civ: Daha önceki kısa sahne fikrinde geçen yakın arkadaş. Tasarımı, dizideki kalıcı rolü ve ses kimliği henüz netleştirilecek.
+- Civ: Miyav'ın en yakın arkadaşı ve onun gibi yaramaz. Sabit görsel referansı: https://drive.google.com/file/d/1h-kIAKwJYOGyvdF2bN9GirPr2ceg_9dM/view — parlak sarı, tombul ve kabarık tüylü civciv; büyük kahverengi gözler, pembe yanaklar, turuncu gaga ve ayaklar, başında birkaç yukarı kalkık tüy; turuncu kenarlı beyaz önlükte civciv resmi ve küçük pati izleri. Görselde görünen “Civ” yazısı karakterin üstünde veya sahnede zorunlu değildir.
 
 ## Mevcut çalışma ve durum
 - Depodaki `episodes/episode_001.plan.json` dosyası “Büyük Temizlik Günü” adlı 10 dakikalık otomatik çekim planıdır. Bu, onaylanmış devam senaryosu sayılmaz; yeni kurallara ve mevcut videonun bitişine göre birlikte gözden geçirilir.
@@ -44,4 +44,4 @@ Bu klasör, YouTube çizgi filminin hikâye ve bölüm sırasını birlikte olu�
 ## Birlikte netleştireceğimiz ilk bilgiler
 - Mevcut çizgi filmde şimdiye kadar tam olarak ne oldu ve görüntü nerede bitiyor?
 - Devamın ana konusu ne olsun?
-- Civ kalıcı karakter mi, konuk karakter mi?
+- Civ'in görseli ve Miyav'la yakın arkadaşlığı sabitlendi; sahnelerde aynı referans korunacak.
